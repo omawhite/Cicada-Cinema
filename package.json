@@ -2,8 +2,9 @@
   "name": "cicada-cinema",
   "type": "module",
   "version": "0.0.1",
+  "packageManager": "pnpm@10.30.3",
   "engines": {
-    "node": ">=22.12.0"
+    "node": ">=24.0.0"
   },
   "scripts": {
     "dev": "astro dev",
@@ -11,13 +12,25 @@
     "preview": "astro preview",
     "astro": "astro",
     "deploy": "astro build && wrangler deploy",
-    "cf:preview": "astro build && wrangler dev"
+    "cf:preview": "astro build && wrangler dev",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "typecheck": "astro check",
+    "test": "vitest run --passWithNoTests"
   },
   "dependencies": {
     "astro": "^6.1.5"
   },
   "devDependencies": {
+    "@astrojs/check": "^0.9.4",
     "@astrojs/cloudflare": "^13.1.8",
+    "eslint": "^9.0.0",
+    "eslint-plugin-astro": "^1.3.1",
+    "prettier": "^3.5.3",
+    "prettier-plugin-astro": "^0.14.1",
+    "typescript-eslint": "^8.29.1",
+    "vitest": "^3.1.1",
     "wrangler": "^4.81.1"
   },
   "pnpm": {
