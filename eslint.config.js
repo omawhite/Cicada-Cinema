@@ -4,6 +4,12 @@ import storybook from "eslint-plugin-storybook";
 import eslintPluginAstro from "eslint-plugin-astro";
 import tseslint from "typescript-eslint";
 
-export default tseslint.config(...eslintPluginAstro.configs["flat/recommended"], {
-  ignores: ["dist/", ".astro/"],
-}, storybook.configs["flat/recommended"]);
+export default tseslint.config(
+  ...eslintPluginAstro.configs["flat/recommended"],
+  ...tseslint.configs.recommended.map((config) => ({
+    ...config,
+    files: ["**/*.ts", "**/*.tsx", "**/*.mts", "**/*.cts"],
+  })),
+  { ignores: ["dist/", ".astro/"] },
+  storybook.configs["flat/recommended"],
+);

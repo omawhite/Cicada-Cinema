@@ -7,7 +7,14 @@ const config: StorybookConfig = {
   framework: {
     name: '@storybook/react-vite',
     options: {},
-  }
+  },
+
+  async viteFinal(config) {
+    const { mergeConfig } = await import('vite');
+    return mergeConfig(config, {
+      esbuild: { jsx: 'automatic' },
+    });
+  },
 };
 
 export default config;
