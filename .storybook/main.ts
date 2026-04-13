@@ -12,6 +12,14 @@ const config: StorybookConfig = {
     "@storybook/addon-docs",
     "@storybook/addon-onboarding"
   ],
-  "framework": "@storybook/react-vite"
+  "framework": "@storybook/react-vite",
+  async   viteFinal(config) {
+    const tsconfigPaths = await import('vite-tsconfig-paths').then(m => m.default);
+    config.plugins ??= [];
+    config.plugins.push(tsconfigPaths({
+      projects: ['./tsconfig.json']
+    }));
+    return config;
+  },
 };
 export default config;
