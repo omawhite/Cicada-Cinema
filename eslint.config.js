@@ -8,7 +8,6 @@ import { defineConfig } from 'eslint/config';
 
 export default defineConfig(
   eslintPluginAstro.configs["flat/recommended"],
-  eslint.configs.recommended,
   tseslint.configs.recommended,
   storybook.configs["flat/recommended"],
   {
