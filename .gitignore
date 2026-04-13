@@ -30,3 +30,7 @@ pnpm-debug.log*
 
 # AI stuff
 .claude/
+
+#Storybook
+*storybook.log
+storybook-static
