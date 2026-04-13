@@ -14,12 +14,16 @@ const config: StorybookConfig = {
   ],
   "framework": "@storybook/react-vite",
   async   viteFinal(config) {
+    const { mergeConfig } = await import("vite");
+    // see: https://borisliao.substack.com/p/tailwind-v4-for-storybook-v8-under
+    const tailwindcss = await import("@tailwindcss/vite").then(m => m.default);
+    // see: https://fantinel.dev/blog/storybook-astro-svelte#other-useful-things
     const tsconfigPaths = await import('vite-tsconfig-paths').then(m => m.default);
-    config.plugins ??= [];
-    config.plugins.push(tsconfigPaths({
-      projects: ['./tsconfig.json']
-    }));
-    return config;
+    return mergeConfig(config, {
+      plugins: [tailwindcss(), tsconfigPaths({
+        projects: ['./tsconfig.json']
+      })],
+    });
   },
 };
 export default config;
