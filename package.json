@@ -18,6 +18,8 @@
     "typecheck": "tsc --noEmit",
     "astro:check": "astro check",
     "test": "vitest run --passWithNoTests",
+    "test:unit": "vitest run --project unit --passWithNoTests",
+    "test:storybook": "vitest run --project storybook --passWithNoTests",
     "storybook": "storybook dev -p 6006 --no-open",
     "build-storybook": "storybook build"
   },
