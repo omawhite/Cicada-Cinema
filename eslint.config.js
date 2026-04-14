@@ -3,14 +3,13 @@ import storybook from "eslint-plugin-storybook";
 
 import eslintPluginAstro from "eslint-plugin-astro";
 import tseslint from "typescript-eslint";
-import { defineConfig } from 'eslint/config';
+import { defineConfig } from "eslint/config";
 
-
-export default defineConfig(
-  eslintPluginAstro.configs["flat/recommended"],
-  tseslint.configs.recommended,
-  storybook.configs["flat/recommended"],
+export default defineConfig([
+  ...tseslint.configs.recommended,
+  ...storybook.configs["flat/recommended"],
+  ...eslintPluginAstro.configs["flat/recommended"],
   {
     ignores: ["dist/", ".astro/", ".claude/"],
   },
-)
+]);
