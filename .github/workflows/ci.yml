@@ -37,21 +37,6 @@ jobs:
       - run: pnpm install --frozen-lockfile
       - run: pnpm format:check
 
-  typecheck:
-    name: Typecheck
-    runs-on: ubuntu-slim
-    steps:
-      - uses: actions/checkout@v4
-      - uses: pnpm/action-setup@v4
-        with:
-          run_install: false
-      - uses: actions/setup-node@v4
-        with:
-          node-version-file: package.json
-          cache: pnpm
-      - run: pnpm install --frozen-lockfile
-      - run: pnpm typecheck
-
   astro-check:
     name: Astro Check
     runs-on: ubuntu-slim
@@ -80,4 +65,20 @@ jobs:
           node-version-file: package.json
           cache: pnpm
       - run: pnpm install --frozen-lockfile
-      - run: pnpm test
+      - run: pnpm test:unit
+
+  test-storybook:
+    name: Storybook Tests
+    runs-on: ubuntu-slim
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          run_install: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: package.json
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm exec playwright install --with-deps chromium
+      - run: pnpm test:storybook

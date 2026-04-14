@@ -15,9 +15,11 @@
     "lint": "eslint .",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "typecheck": "tsc --noEmit",
+    "typecheck": "astro check",
     "astro:check": "astro check",
     "test": "vitest run --passWithNoTests",
+    "test:unit": "vitest run --project unit --passWithNoTests",
+    "test:storybook": "vitest run --project storybook --passWithNoTests",
     "storybook": "storybook dev -p 6006 --no-open",
     "build-storybook": "storybook build"
   },
@@ -60,6 +62,7 @@
     "prettier-plugin-astro": "^0.14.1",
     "storybook": "^10.3.5",
     "typescript-eslint": "^8.29.1",
+    "typescript": "5.9.3",
     "vitest": "^4.1.4",
     "wrangler": "^4.81.1"
   },
