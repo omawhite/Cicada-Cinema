@@ -50,6 +50,7 @@ jobs:
           node-version-file: package.json
           cache: pnpm
       - run: pnpm install --frozen-lockfile
+      - run: pnpm exec astro sync
       - run: pnpm typecheck
 
   astro-check:
@@ -95,5 +96,5 @@ jobs:
           node-version-file: package.json
           cache: pnpm
       - run: pnpm install --frozen-lockfile
-      - run: pnpm exec playwright install chromium
+      - run: pnpm exec playwright install --with-deps chromium
       - run: pnpm test:storybook
