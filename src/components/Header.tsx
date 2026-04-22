@@ -1,4 +1,4 @@
-import logoImage from "../assets/Cicada_Cinema_2024_icon_5-circle-white_80x@2x.png";
+import defaultLogoImage from "../assets/Cicada_Cinema_2024_icon_5-circle-white_80x@2x.png";
 
 interface NavLink {
   href: string;
@@ -6,6 +6,7 @@ interface NavLink {
 }
 
 interface HeaderProps {
+  logoSrc?: string;
   navLinks?: NavLink[];
 }
 
@@ -15,13 +16,13 @@ const defaultNavLinks: NavLink[] = [
   { href: "/calendar", label: "Calendar" },
 ];
 
-export function Header({ navLinks = defaultNavLinks }: HeaderProps) {
+export function Header({ logoSrc, navLinks = defaultNavLinks }: HeaderProps) {
   return (
     <header className="bg-black text-white py-4 px-8">
       <div className="max-w-6xl mx-auto flex items-center justify-start">
         <a href="/" className="flex items-center">
           <img
-            src={logoImage.src ?? logoImage}
+            src={logoSrc ?? defaultLogoImage.src}
             alt="Cicada Cinema"
             width="60"
             height="60"

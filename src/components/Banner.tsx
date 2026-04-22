@@ -1,6 +1,10 @@
-import bannerImage from "../assets/Cicada_Curtain_CROP_2.png";
+import defaultBannerImage from "../assets/Cicada_Curtain_CROP_2.png";
 
-export function Banner() {
+interface BannerProps {
+  src?: string;
+}
+
+export function Banner({ src }: BannerProps) {
   return (
     <div
       className="relative w-full h-80 md:h-96 lg:h-128 overflow-hidden border-t-2 border-b-2"
@@ -10,7 +14,7 @@ export function Banner() {
       }}
     >
       <img
-        src={bannerImage.src ?? bannerImage}
+        src={src ?? defaultBannerImage.src}
         alt="Cicada Cinema Banner"
         className="object-cover object-center w-full h-full"
         loading="eager"

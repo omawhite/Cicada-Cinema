@@ -1,6 +1,12 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Header } from "./Header";
 import { Banner } from "./Banner";
+import bannerImage from "../assets/Cicada_Curtain_CROP_2.png";
+import logoImage from "../assets/Cicada_Cinema_2024_icon_5-circle-white_80x@2x.png";
+
+// Vite returns a string URL for image imports; Astro types them as ImageMetadata
+const bannerSrc = bannerImage as unknown as string;
+const logoSrc = logoImage as unknown as string;
 
 const meta = {
   title: "Components/Banner",
@@ -8,6 +14,9 @@ const meta = {
   tags: ["autodocs"],
   parameters: {
     layout: "fullscreen",
+  },
+  args: {
+    src: bannerSrc,
   },
 } satisfies Meta<typeof Banner>;
 
@@ -19,8 +28,8 @@ export const Default: Story = {};
 export const WithPageLayout: Story = {
   render: () => (
     <div className="bg-black text-white min-h-screen">
-      <Header />
-      <Banner />
+      <Header logoSrc={logoSrc} />
+      <Banner src={bannerSrc} />
       <main className="max-w-6xl mx-auto px-8 py-12 space-y-12">
         <section className="space-y-4">
           <h2 className="text-2xl font-semibold">Now Showing</h2>
