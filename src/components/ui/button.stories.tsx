@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
+import { expect, userEvent, within } from "@storybook/test";
 import { Button } from "./button";
 
 const meta = {
@@ -43,7 +44,14 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {};
+export const Default: Story = {
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const button = canvas.getByRole("button", { name: /button/i });
+    await expect(button).toBeVisible();
+    await userEvent.click(button);
+  },
+};
 
 export const Outline: Story = {
   args: { variant: "outline" },
@@ -67,6 +75,11 @@ export const Link: Story = {
 
 export const Disabled: Story = {
   args: { disabled: true },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const button = canvas.getByRole("button", { name: /button/i });
+    await expect(button).toBeDisabled();
+  },
 };
 
 export const Sizes: Story = {

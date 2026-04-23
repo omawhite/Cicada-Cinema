@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
+import { expect, within } from "@storybook/test";
 import { Header } from "./Header";
 import { Banner } from "./Banner";
 import bannerImage from "../assets/Cicada_Curtain_CROP_2.png";
@@ -23,7 +24,13 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {};
+export const Default: Story = {
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const image = canvas.getByAltText("Cicada Cinema Banner");
+    await expect(image).toBeVisible();
+  },
+};
 
 export const WithPageLayout: Story = {
   render: () => (
