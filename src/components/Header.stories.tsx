@@ -29,9 +29,16 @@ export const Default: Story = {
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     await expect(canvas.getByAltText("Cicada Cinema")).toBeVisible();
-    await expect(canvas.getByRole("link", { name: /home/i })).toHaveAttribute("href", "/");
-    await expect(canvas.getByRole("link", { name: /showtimes/i })).toHaveAttribute("href", "/showtimes");
-    await expect(canvas.getByRole("link", { name: /calendar/i })).toHaveAttribute("href", "/calendar");
+    await expect(canvas.getByRole("link", { name: /home/i })).toHaveAttribute(
+      "href",
+      "/",
+    );
+    await expect(
+      canvas.getByRole("link", { name: /showtimes/i }),
+    ).toHaveAttribute("href", "/showtimes");
+    await expect(
+      canvas.getByRole("link", { name: /calendar/i }),
+    ).toHaveAttribute("href", "/calendar");
   },
 };
 
@@ -46,9 +53,17 @@ export const CustomLinks: Story = {
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-    await expect(canvas.getByRole("link", { name: /films/i })).toHaveAttribute("href", "/films");
-    await expect(canvas.getByRole("link", { name: /about/i })).toHaveAttribute("href", "/about");
-    await expect(canvas.getByRole("link", { name: /contact/i })).toHaveAttribute("href", "/contact");
+    await expect(canvas.getByRole("link", { name: /films/i })).toHaveAttribute(
+      "href",
+      "/films",
+    );
+    await expect(canvas.getByRole("link", { name: /about/i })).toHaveAttribute(
+      "href",
+      "/about",
+    );
+    await expect(
+      canvas.getByRole("link", { name: /contact/i }),
+    ).toHaveAttribute("href", "/contact");
   },
 };
 
@@ -61,6 +76,9 @@ export const MinimalNav: Story = {
     // logo link + 1 nav link = 2 total links
     const links = canvas.getAllByRole("link");
     await expect(links).toHaveLength(2);
-    await expect(canvas.getByRole("link", { name: /home/i })).toHaveAttribute("href", "/");
+    await expect(canvas.getByRole("link", { name: /home/i })).toHaveAttribute(
+      "href",
+      "/",
+    );
   },
 };
