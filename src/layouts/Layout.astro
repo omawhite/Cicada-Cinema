@@ -1,5 +1,7 @@
 ---
 import "../global.css";
+import { Header } from "../components/Header";
+import { Footer } from "../components/Footer";
 
 interface Props {
   title?: string;
@@ -18,6 +20,8 @@ const { title = "Cicada Cinema" } = Astro.props;
     <title>{title}</title>
   </head>
   <body>
+    <Header />
     <slot />
+    <Footer />
   </body>
 </html>
