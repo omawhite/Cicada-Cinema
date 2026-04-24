@@ -16,11 +16,12 @@ const config: StorybookConfig = {
     const tailwindcss = await import("@tailwindcss/vite").then(
       (m) => m.default,
     );
+    // vite-tsconfig-paths is needed to resolve typescript aliases in Storybook stories
+    const tsconfigPaths = await import("vite-tsconfig-paths").then(
+      (m) => m.default,
+    );
     return mergeConfig(config, {
-      plugins: [tailwindcss()],
-      resolve: {
-        tsconfigPaths: true,
-      },
+      plugins: [tailwindcss(), tsconfigPaths()],
     });
   },
 };

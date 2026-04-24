@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { expect, within } from "@storybook/test";
+import { expect, within } from "storybook/test";
 import { Header } from "./Header";
 import logoImage from "../assets/Cicada_Cinema_2024_icon_5-circle-white_80x@2x.png";
 
@@ -33,12 +33,6 @@ export const Default: Story = {
       "href",
       "/",
     );
-    await expect(
-      canvas.getByRole("link", { name: /showtimes/i }),
-    ).toHaveAttribute("href", "/showtimes");
-    await expect(
-      canvas.getByRole("link", { name: /calendar/i }),
-    ).toHaveAttribute("href", "/calendar");
   },
 };
 
