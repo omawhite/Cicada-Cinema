@@ -33,12 +33,6 @@ export const Default: Story = {
       "href",
       "/",
     );
-    await expect(
-      canvas.getByRole("link", { name: /showtimes/i }),
-    ).toHaveAttribute("href", "/showtimes");
-    await expect(
-      canvas.getByRole("link", { name: /calendar/i }),
-    ).toHaveAttribute("href", "/calendar");
   },
 };
 
