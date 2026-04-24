@@ -12,8 +12,6 @@ interface HeaderProps {
 
 const defaultNavLinks: NavLink[] = [
   { href: "/", label: "Home" },
-  { href: "/showtimes", label: "Showtimes" },
-  { href: "/calendar", label: "Calendar" },
 ];
 
 export function Header({ logoSrc, navLinks = defaultNavLinks }: HeaderProps) {
