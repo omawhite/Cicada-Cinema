@@ -2,3 +2,4 @@ dist/
 .astro/
 .claude/
 pnpm-lock.yaml
+README.md
