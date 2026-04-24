@@ -10,9 +10,7 @@ interface HeaderProps {
   navLinks?: NavLink[];
 }
 
-const defaultNavLinks: NavLink[] = [
-  { href: "/", label: "Home" },
-];
+const defaultNavLinks: NavLink[] = [{ href: "/", label: "Home" }];
 
 export function Header({ logoSrc, navLinks = defaultNavLinks }: HeaderProps) {
   return (
