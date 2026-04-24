@@ -1,6 +1,6 @@
 ---
 import "../global.css";
-import { Header } from "../components/Header";
+import { Header, type NavLink } from "../components/Header";
 import { Footer } from "../components/Footer";
 
 interface Props {
@@ -8,6 +8,10 @@ interface Props {
 }
 
 const { title = "Cicada Cinema" } = Astro.props;
+const navLinks: NavLink[] = [
+  { href: "/", label: "Home" },
+  { href: "/archive", label: "Archive" },
+];
 ---
 
 <html lang="en">
@@ -20,7 +24,7 @@ const { title = "Cicada Cinema" } = Astro.props;
     <title>{title}</title>
   </head>
   <body class="flex flex-col min-h-screen">
-    <Header />
+    <Header navLinks={navLinks} />
     <main class="flex-1">
       <slot />
     </main>

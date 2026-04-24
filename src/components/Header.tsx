@@ -1,6 +1,6 @@
 import defaultLogoImage from "../assets/Cicada_Cinema_2024_icon_5-circle-white_80x@2x.png";
 
-interface NavLink {
+export interface NavLink {
   href: string;
   label: string;
 }
