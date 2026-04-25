@@ -1,4 +1,4 @@
-import type { Screening } from "@/lib/screenings";
+import type { ArchivedScreening } from "@/lib/archived-screenings";
 import {
   Table,
   TableBody,
@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/table";
 
 interface ScreeningsTableProps {
-  screenings: Screening[];
+  screenings: ArchivedScreening[];
 }
 
 function formatDate(dateStr: string): string {

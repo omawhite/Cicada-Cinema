@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { ScreeningsTable } from "./ScreeningsTable";
-import type { Screening } from "@/lib/screenings";
+import type { ArchivedScreening } from "@/lib/archived-screenings";
 
-const mockScreenings: Screening[] = [
+const mockScreenings: ArchivedScreening[] = [
   {
     film: "La Jetée",
     date: "2024-11-12",
