@@ -3,31 +3,10 @@ export const prerender = false;
 
 import Layout from "../layouts/Layout.astro";
 import { ScreeningsTable } from "../components/ScreeningsTable";
-import { fetchArchivedScreenings } from "../lib/archived-screenings";
-import type { ArchivedScreening } from "../lib/archived-screenings";
-
-let screenings: ArchivedScreening[] = [];
-let fetchError: string | null = null;
-
-try {
-  screenings = await fetchArchivedScreenings();
-} catch (err) {
-  fetchError =
-    err instanceof Error ? err.message : "Unknown error fetching screenings";
-  console.error("Failed to fetch archive screenings:", fetchError);
-}
 ---
 
 <Layout title="Screenings Archive">
   <div class="max-w-6xl mx-auto px-8 py-10">
     <h1 class="text-2xl font-semibold mb-6">Screenings Archive</h1>
-    {
-      fetchError && (
-        <p class="text-sm text-destructive py-8 text-center">
-          Unable to load screenings. Please try again later.
-        </p>
-      )
-    }
-    {!fetchError && <ScreeningsTable screenings={screenings} client:load />}
   </div>
 </Layout>
