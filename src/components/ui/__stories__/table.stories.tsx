@@ -23,7 +23,12 @@ type Story = StoryObj<typeof meta>;
 const sampleRows = [
   { name: "Alice", role: "Engineer", department: "Platform", status: "Active" },
   { name: "Bob", role: "Designer", department: "Product", status: "Active" },
-  { name: "Carol", role: "Manager", department: "Engineering", status: "On leave" },
+  {
+    name: "Carol",
+    role: "Manager",
+    department: "Engineering",
+    status: "On leave",
+  },
   { name: "David", role: "Analyst", department: "Data", status: "Active" },
   { name: "Eve", role: "Engineer", department: "Security", status: "Inactive" },
 ];
@@ -54,7 +59,9 @@ export const Default: Story = {
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     await expect(canvas.getByRole("table")).toBeVisible();
-    await expect(canvas.getAllByRole("row")).toHaveLength(sampleRows.length + 1);
+    await expect(canvas.getAllByRole("row")).toHaveLength(
+      sampleRows.length + 1,
+    );
   },
 };
 

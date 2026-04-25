@@ -25,4 +25,3 @@ export const Default: Story = {
     await expect(image).toBeVisible();
   },
 };
-

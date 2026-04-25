@@ -50,11 +50,7 @@ describe("filterScreenings", () => {
   });
 
   it("filters by series and year together", () => {
-    const result = filterScreenings(
-      screenings,
-      "Italian Neorealism",
-      "1945",
-    );
+    const result = filterScreenings(screenings, "Italian Neorealism", "1945");
     expect(result).toHaveLength(1);
     expect(result[0].film).toBe("Rome, Open City");
   });

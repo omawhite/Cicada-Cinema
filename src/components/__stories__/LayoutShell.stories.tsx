@@ -79,4 +79,4 @@ export const WithBannerAndPageLayout: Story = {
       </div>
     </LayoutShell>
   ),
-}
+};

@@ -1,6 +1,10 @@
 import { useState, useMemo } from "react";
 import { ChevronUp, ChevronDown, ChevronsUpDown } from "lucide-react";
-import type { ArchivedScreening, SortField, SortDirection } from "@/lib/archived-screenings";
+import type {
+  ArchivedScreening,
+  SortField,
+  SortDirection,
+} from "@/lib/archived-screenings";
 import { filterScreenings, sortScreenings } from "@/lib/archived-screenings";
 import {
   Table,
@@ -52,7 +56,9 @@ function SortIcon({
   sortDir: SortDirection;
 }) {
   if (field !== sortField)
-    return <ChevronsUpDown className="ml-1 inline-block h-3.5 w-3.5 opacity-40" />;
+    return (
+      <ChevronsUpDown className="ml-1 inline-block h-3.5 w-3.5 opacity-40" />
+    );
   return sortDir === "asc" ? (
     <ChevronUp className="ml-1 inline-block h-3.5 w-3.5" />
   ) : (
@@ -73,8 +79,8 @@ export function ScreeningsTable({ screenings }: ScreeningsTableProps) {
 
   const uniqueYears = useMemo(
     () =>
-      [...new Set(screenings.map((s) => s.year).filter(Boolean))].sort(
-        (a, b) => String(b).localeCompare(String(a)),
+      [...new Set(screenings.map((s) => s.year).filter(Boolean))].sort((a, b) =>
+        String(b).localeCompare(String(a)),
       ),
     [screenings],
   );
@@ -180,7 +186,11 @@ export function ScreeningsTable({ screenings }: ScreeningsTableProps) {
                   onClick={() => handleSortClick(field)}
                 >
                   {label}
-                  <SortIcon field={field} sortField={sortField} sortDir={sortDir} />
+                  <SortIcon
+                    field={field}
+                    sortField={sortField}
+                    sortDir={sortDir}
+                  />
                 </TableHead>
               ))}
               <TableHead>Location</TableHead>
