@@ -1,4 +1,4 @@
-import defaultBannerImage from "../assets/Cicada_Curtain_CROP_2.png";
+const DEFAULT_BANNER = "/Cicada_Curtain_CROP_2.png";
 
 interface BannerProps {
   src?: string;
@@ -14,7 +14,7 @@ export function Banner({ src }: BannerProps) {
       }}
     >
       <img
-        src={src ?? defaultBannerImage.src}
+        src={src ?? DEFAULT_BANNER}
         alt="Cicada Cinema Banner"
         className="object-cover object-center w-full h-full"
         loading="eager"

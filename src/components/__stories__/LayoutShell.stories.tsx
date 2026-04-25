@@ -2,10 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import { expect, within } from "storybook/test";
 import { LayoutShell } from "../LayoutShell";
 import { Banner } from "../Banner";
-import bannerImage from "@/assets/Cicada_Curtain_CROP_2.png"
-
-// Vite returns a string URL for image imports; Astro types them as ImageMetadata
-const bannerSrc = bannerImage as unknown as string;
+const bannerSrc = "/Cicada_Curtain_CROP_2.png";
 
 const meta = {
   title: "Layout/LayoutShell",
