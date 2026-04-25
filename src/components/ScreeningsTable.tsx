@@ -14,9 +14,10 @@ interface ScreeningsTableProps {
 
 function formatDate(dateStr: string): string {
   if (!dateStr) return "";
-  const date = new Date(dateStr + "T00:00:00");
+  const date = new Date(dateStr);
   if (isNaN(date.getTime())) return dateStr;
   return date.toLocaleDateString("en-US", {
+    timeZone: "UTC",
     month: "short",
     day: "numeric",
     year: "numeric",
