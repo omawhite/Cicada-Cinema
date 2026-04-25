@@ -136,6 +136,6 @@ export const WithDefaultValue: Story = {
   ),
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-    await expect(canvas.getByText("Drama")).toBeVisible();
+    await expect(canvas.getByText("drama")).toBeVisible();
   },
 };
