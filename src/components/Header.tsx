@@ -1,4 +1,4 @@
-import defaultLogoImage from "../assets/Cicada_Cinema_2024_icon_5-circle-white_80x@2x.png";
+const DEFAULT_LOGO = "/Cicada_Cinema_2024_icon_5-circle-white_80x@2x.png";
 
 interface NavLink {
   href: string;
@@ -18,7 +18,7 @@ export function Header({ logoSrc, navLinks = defaultNavLinks }: HeaderProps) {
       <div className="max-w-6xl mx-auto flex items-center justify-start">
         <a href="/" className="flex items-center">
           <img
-            src={logoSrc ?? defaultLogoImage.src}
+            src={logoSrc ?? DEFAULT_LOGO}
             alt="Cicada Cinema"
             width="60"
             height="60"
