@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { ScreeningsTable } from "../ScreeningsTable";
+import { ScreeningsArchiveTable } from "../ScreeningsArchiveTable";
 import type { ArchivedScreening } from "@/lib/archived-screenings";
 
 const mockScreenings: ArchivedScreening[] = [
@@ -46,13 +46,21 @@ const mockScreenings: ArchivedScreening[] = [
 ];
 
 const meta = {
-  title: "Components/ScreeningsTable",
-  component: ScreeningsTable,
+  title: "Components/ScreeningsArchiveTable",
+  component: ScreeningsArchiveTable,
   tags: ["autodocs"],
+  parameters: {
+    docs: {
+      description: {
+        component:
+          "Displays past screenings for the archive page. Supports sorting by date, film, series, and year, and filtering by series or year.",
+      },
+    },
+  },
   argTypes: {
     screenings: { control: false },
   },
-} satisfies Meta<typeof ScreeningsTable>;
+} satisfies Meta<typeof ScreeningsArchiveTable>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
