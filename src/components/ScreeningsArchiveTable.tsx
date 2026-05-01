@@ -23,7 +23,7 @@ import {
 } from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
 
-interface ScreeningsTableProps {
+interface ScreeningsArchiveTableProps {
   screenings: ArchivedScreening[];
 }
 
@@ -66,7 +66,7 @@ function SortIcon({
   );
 }
 
-export function ScreeningsTable({ screenings }: ScreeningsTableProps) {
+export function ScreeningsArchiveTable({ screenings }: ScreeningsArchiveTableProps) {
   const [sortField, setSortField] = useState<SortField>("date");
   const [sortDir, setSortDir] = useState<SortDirection>("desc");
   const [filterSeries, setFilterSeries] = useState("");
