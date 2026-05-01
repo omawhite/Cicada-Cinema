@@ -1,0 +1,166 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+
+<Meta title="Welcome" />
+
+<div className="sb-container">
+  <div className="sb-section-title">
+    # 🎬 Cicada Cinema — Component Storybook
+
+    Welcome! This is the living component library for **Cicada Cinema**, documenting the UI building blocks that make up the site. Whether you're a designer exploring what's available, a developer building new features, or a new volunteer getting up to speed — you're in the right place.
+
+    Browse the sidebar to explore individual components, see their variants, and read usage notes.
+
+  </div>
+</div>
+
+<div className="sb-container">
+  <div className="sb-section-title">
+    ## Getting started with Storybook
+  </div>
+  <div className="sb-section">
+    <div className="sb-section-item">
+      <h4 className="sb-section-item-heading">What is Storybook?</h4>
+      <p className="sb-section-item-paragraph">Storybook is an open-source tool for building UI components in isolation. It lets you develop, document, and test components without needing to run the full application.</p>
+      <a
+        className="sb-action-link"
+        href="https://storybook.js.org/docs/get-started/what-is-storybook"
+        target="_blank"
+      >Read the intro →</a>
+    </div>
+    <div className="sb-section-item">
+      <h4 className="sb-section-item-heading">For designers</h4>
+      <p className="sb-section-item-paragraph">Use the Controls panel at the bottom of each story to tweak props interactively, and the Accessibility panel to check contrast and ARIA compliance — no code required.</p>
+      <a
+        className="sb-action-link"
+        href="https://storybook.js.org/docs/get-started/browse-stories"
+        target="_blank"
+      >Browsing stories →</a>
+    </div>
+    <div className="sb-section-item">
+      <h4 className="sb-section-item-heading">For developers</h4>
+      <p className="sb-section-item-paragraph">Stories live next to their components in <code>src/components/</code>. Each story file exports named variants that map to different component states. Run <code>pnpm storybook</code> to start locally.</p>
+      <a
+        className="sb-action-link"
+        href="https://storybook.js.org/docs/writing-stories"
+        target="_blank"
+      >Writing stories →</a>
+    </div>
+  </div>
+</div>
+
+<div className="sb-container">
+  <div className="sb-section-title">
+    ## Helpful resources
+  </div>
+  <div className="sb-section">
+    <div className="sb-section-item">
+      <h4 className="sb-section-item-heading">Storybook docs</h4>
+      <p className="sb-section-item-paragraph">The official documentation covers everything from writing your first story to advanced topics like decorators, loaders, and testing.</p>
+      <a
+        className="sb-action-link"
+        href="https://storybook.js.org/docs"
+        target="_blank"
+      >storybook.js.org/docs →</a>
+    </div>
+    <div className="sb-section-item">
+      <h4 className="sb-section-item-heading">Interactive tutorial</h4>
+      <p className="sb-section-item-paragraph">New to Storybook? The official tutorial walks through the core concepts step-by-step using a realistic example project — a great place to start.</p>
+      <a
+        className="sb-action-link"
+        href="https://storybook.js.org/tutorials/intro-to-storybook/react/en/get-started/"
+        target="_blank"
+      >Start the tutorial →</a>
+    </div>
+    <div className="sb-section-item">
+      <h4 className="sb-section-item-heading">Component Story Format</h4>
+      <p className="sb-section-item-paragraph">All stories in this project use CSF3. Understanding the format makes it easy to read and write stories across the codebase.</p>
+      <a
+        className="sb-action-link"
+        href="https://storybook.js.org/docs/api/csf"
+        target="_blank"
+      >CSF reference →</a>
+    </div>
+  </div>
+  <div className="sb-section" style={{ marginTop: "20px" }}>
+    <div className="sb-section-item">
+      <h4 className="sb-section-item-heading">Accessibility testing</h4>
+      <p className="sb-section-item-paragraph">This Storybook has the accessibility addon enabled. Every story shows an Accessibility tab — look there to catch a11y issues before they reach production.</p>
+      <a
+        className="sb-action-link"
+        href="https://storybook.js.org/docs/writing-tests/accessibility-testing"
+        target="_blank"
+      >Accessibility testing guide →</a>
+    </div>
+    <div className="sb-section-item">
+      <h4 className="sb-section-item-heading">Tailwind CSS v4</h4>
+      <p className="sb-section-item-paragraph">The project uses Tailwind CSS v4 configured via CSS custom properties in <code>src/global.css</code>. All utility classes are available inside stories.</p>
+      <a
+        className="sb-action-link"
+        href="https://tailwindcss.com/docs"
+        target="_blank"
+      >Tailwind docs →</a>
+    </div>
+    <div className="sb-section-item">
+      <h4 className="sb-section-item-heading">Storybook setup info</h4>
+      <p className="sb-section-item-paragraph">Looking for the original Storybook configuration guide? It's preserved under <strong>Storybook Setup</strong> in the sidebar.</p>
+    </div>
+  </div>
+</div>
+
+<style>
+  {`
+  .sb-container {
+    margin-bottom: 48px;
+  }
+
+  .sb-section {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+  }
+
+  .sb-section-title {
+    margin-bottom: 32px;
+  }
+
+  .sb-section a:not(h1 a, h2 a, h3 a) {
+    font-size: 14px;
+  }
+
+  .sb-section-item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .sb-section-item-heading {
+    padding-top: 0 !important;
+    padding-bottom: 5px !important;
+    margin: 0 !important;
+  }
+
+  .sb-section-item-paragraph {
+    margin: 0;
+    padding-bottom: 10px;
+  }
+
+  .sb-action-link {
+    text-decoration: none;
+    font-size: 14px;
+  }
+
+  .sb-action-link:hover,
+  .sb-action-link:focus {
+    text-decoration: underline;
+    text-decoration-thickness: 0.03125rem;
+    text-underline-offset: 0.11em;
+  }
+
+  @media screen and (max-width: 600px) {
+    .sb-section {
+      flex-direction: column;
+    }
+  }
+  `}
+</style>
