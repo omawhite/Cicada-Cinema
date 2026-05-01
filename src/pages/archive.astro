@@ -2,7 +2,7 @@
 export const prerender = false;
 
 import Layout from "../layouts/Layout.astro";
-import { ScreeningsTable } from "../components/ScreeningsTable";
+import { ScreeningsArchiveTable } from "../components/ScreeningsArchiveTable";
 import type { ArchivedScreening } from "../lib/archived-screenings";
 
 const url =
@@ -31,7 +31,7 @@ try {
           Something went wrong loading the screenings. Please try again later.
         </p>
       ) : (
-        <ScreeningsTable screenings={screenings} client:load />
+        <ScreeningsArchiveTable screenings={screenings} client:load />
       )
     }
   </div>
