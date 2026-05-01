@@ -1,0 +1,38 @@
+---
+export const prerender = false;
+
+import Layout from "../layouts/Layout.astro";
+import { ScreeningsTable } from "../components/ScreeningsTable";
+import type { ArchivedScreening } from "../lib/archived-screenings";
+
+const url =
+  "https://script.google.com/macros/s/AKfycbxtTkT907PtnYnI5G4HYsYX80paZznCRxtDe3M6qti-T9XHLPQBeCnDq1C9Oxb5lmG-/exec";
+
+let screenings: ArchivedScreening[] = [];
+let fetchError: string | null = null;
+
+try {
+  const response = await fetch(url);
+  if (!response.ok) {
+    throw new Error(`Request failed with status ${response.status}`);
+  }
+  screenings = await response.json();
+} catch (error) {
+  fetchError = error instanceof Error ? error.message : "Unknown error";
+}
+---
+
+<Layout title="Screenings Archive">
+  <div class="max-w-6xl mx-auto px-8 py-10">
+    <h1 class="text-2xl font-semibold mb-6">Screenings Archive</h1>
+    {
+      fetchError ? (
+        <p class="text-muted-foreground text-sm py-8 text-center">
+          Something went wrong loading the screenings. Please try again later.
+        </p>
+      ) : (
+        <ScreeningsTable screenings={screenings} client:load />
+      )
+    }
+  </div>
+</Layout>
