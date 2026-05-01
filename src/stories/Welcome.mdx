@@ -14,95 +14,139 @@ import { Meta } from "@storybook/addon-docs/blocks";
 </div>
 
 <div className="sb-container">
-  <div className="sb-section-title">
-    ## Getting started with Storybook
-  </div>
+  <div className="sb-section-title">## Getting started with Storybook</div>
   <div className="sb-section">
     <div className="sb-section-item">
       <h4 className="sb-section-item-heading">What is Storybook?</h4>
-      <p className="sb-section-item-paragraph">Storybook is an open-source tool for building UI components in isolation. It lets you develop, document, and test components without needing to run the full application.</p>
+      <p className="sb-section-item-paragraph">
+        Storybook is an open-source tool for building UI components in
+        isolation. It lets you develop, document, and test components without
+        needing to run the full application.
+      </p>
       <a
         className="sb-action-link"
         href="https://storybook.js.org/docs/get-started/what-is-storybook"
         target="_blank"
-      >Read the intro →</a>
+      >
+        Read the intro →
+      </a>
     </div>
     <div className="sb-section-item">
       <h4 className="sb-section-item-heading">For designers</h4>
-      <p className="sb-section-item-paragraph">Use the Controls panel at the bottom of each story to tweak props interactively, and the Accessibility panel to check contrast and ARIA compliance — no code required.</p>
+      <p className="sb-section-item-paragraph">
+        Use the Controls panel at the bottom of each story to tweak props
+        interactively, and the Accessibility panel to check contrast and ARIA
+        compliance — no code required.
+      </p>
       <a
         className="sb-action-link"
         href="https://storybook.js.org/docs/get-started/browse-stories"
         target="_blank"
-      >Browsing stories →</a>
+      >
+        Browsing stories →
+      </a>
     </div>
     <div className="sb-section-item">
       <h4 className="sb-section-item-heading">For developers</h4>
-      <p className="sb-section-item-paragraph">Stories live next to their components in <code>src/components/</code>. Each story file exports named variants that map to different component states. Run <code>pnpm storybook</code> to start locally.</p>
+      <p className="sb-section-item-paragraph">
+        Stories live next to their components in <code>src/components/</code>.
+        Each story file exports named variants that map to different component
+        states. Run <code>pnpm storybook</code> to start locally.
+      </p>
       <a
         className="sb-action-link"
         href="https://storybook.js.org/docs/writing-stories"
         target="_blank"
-      >Writing stories →</a>
+      >
+        Writing stories →
+      </a>
     </div>
   </div>
 </div>
 
 <div className="sb-container">
-  <div className="sb-section-title">
-    ## Helpful resources
-  </div>
+  <div className="sb-section-title">## Helpful resources</div>
   <div className="sb-section">
     <div className="sb-section-item">
       <h4 className="sb-section-item-heading">Storybook docs</h4>
-      <p className="sb-section-item-paragraph">The official documentation covers everything from writing your first story to advanced topics like decorators, loaders, and testing.</p>
+      <p className="sb-section-item-paragraph">
+        The official documentation covers everything from writing your first
+        story to advanced topics like decorators, loaders, and testing.
+      </p>
       <a
         className="sb-action-link"
         href="https://storybook.js.org/docs"
         target="_blank"
-      >storybook.js.org/docs →</a>
+      >
+        storybook.js.org/docs →
+      </a>
     </div>
     <div className="sb-section-item">
       <h4 className="sb-section-item-heading">Interactive tutorial</h4>
-      <p className="sb-section-item-paragraph">New to Storybook? The official tutorial walks through the core concepts step-by-step using a realistic example project — a great place to start.</p>
+      <p className="sb-section-item-paragraph">
+        New to Storybook? The official tutorial walks through the core concepts
+        step-by-step using a realistic example project — a great place to start.
+      </p>
       <a
         className="sb-action-link"
         href="https://storybook.js.org/tutorials/intro-to-storybook/react/en/get-started/"
         target="_blank"
-      >Start the tutorial →</a>
+      >
+        Start the tutorial →
+      </a>
     </div>
     <div className="sb-section-item">
       <h4 className="sb-section-item-heading">Component Story Format</h4>
-      <p className="sb-section-item-paragraph">All stories in this project use CSF3. Understanding the format makes it easy to read and write stories across the codebase.</p>
+      <p className="sb-section-item-paragraph">
+        All stories in this project use CSF3. Understanding the format makes it
+        easy to read and write stories across the codebase.
+      </p>
       <a
         className="sb-action-link"
         href="https://storybook.js.org/docs/api/csf"
         target="_blank"
-      >CSF reference →</a>
+      >
+        CSF reference →
+      </a>
     </div>
   </div>
   <div className="sb-section" style={{ marginTop: "20px" }}>
     <div className="sb-section-item">
       <h4 className="sb-section-item-heading">Accessibility testing</h4>
-      <p className="sb-section-item-paragraph">This Storybook has the accessibility addon enabled. Every story shows an Accessibility tab — look there to catch a11y issues before they reach production.</p>
+      <p className="sb-section-item-paragraph">
+        This Storybook has the accessibility addon enabled. Every story shows an
+        Accessibility tab — look there to catch a11y issues before they reach
+        production.
+      </p>
       <a
         className="sb-action-link"
         href="https://storybook.js.org/docs/writing-tests/accessibility-testing"
         target="_blank"
-      >Accessibility testing guide →</a>
+      >
+        Accessibility testing guide →
+      </a>
     </div>
     <div className="sb-section-item">
       <h4 className="sb-section-item-heading">Tailwind CSS v4</h4>
-      <p className="sb-section-item-paragraph">The project uses Tailwind CSS v4 configured via CSS custom properties in <code>src/global.css</code>. All utility classes are available inside stories.</p>
+      <p className="sb-section-item-paragraph">
+        The project uses Tailwind CSS v4 configured via CSS custom properties in{" "}
+        <code>src/global.css</code>. All utility classes are available inside
+        stories.
+      </p>
       <a
         className="sb-action-link"
         href="https://tailwindcss.com/docs"
         target="_blank"
-      >Tailwind docs →</a>
+      >
+        Tailwind docs →
+      </a>
     </div>
     <div className="sb-section-item">
       <h4 className="sb-section-item-heading">Storybook setup info</h4>
-      <p className="sb-section-item-paragraph">Looking for the original Storybook configuration guide? It's preserved under <strong>Storybook Setup</strong> in the sidebar.</p>
+      <p className="sb-section-item-paragraph">
+        Looking for the original Storybook configuration guide? It's preserved
+        under <strong>Storybook Setup</strong> in the sidebar.
+      </p>
     </div>
   </div>
 </div>
