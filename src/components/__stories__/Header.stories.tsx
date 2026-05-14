@@ -13,6 +13,10 @@ const meta = {
       default: "dark",
       values: [{ name: "dark", value: "#000000" }],
     },
+    design: {
+      type: "figma",
+      url: "https://www.figma.com/design/2roOfYg6qLTIwboYmbSmEM/Cicada-website?node-id=80-198&t=umYsDzs4QKnbAgdw-1",
+    },
   },
   args: {
     logoSrc,
