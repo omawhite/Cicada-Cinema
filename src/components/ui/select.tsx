@@ -4,8 +4,10 @@ import { Select as SelectPrimitive } from "@base-ui/react/select";
 import { cn } from "@/lib/utils";
 import { ChevronDownIcon, CheckIcon, ChevronUpIcon } from "lucide-react";
 
+/** Root context provider for the Select. Wrap all other Select parts with this. */
 const Select = SelectPrimitive.Root;
 
+/** Groups a set of SelectItems under an optional SelectLabel. */
 function SelectGroup({ className, ...props }: SelectPrimitive.Group.Props) {
   return (
     <SelectPrimitive.Group
@@ -16,6 +18,7 @@ function SelectGroup({ className, ...props }: SelectPrimitive.Group.Props) {
   );
 }
 
+/** Displays the currently selected value (or placeholder) inside the trigger. */
 function SelectValue({ className, ...props }: SelectPrimitive.Value.Props) {
   return (
     <SelectPrimitive.Value
@@ -26,6 +29,10 @@ function SelectValue({ className, ...props }: SelectPrimitive.Value.Props) {
   );
 }
 
+/**
+ * Button that opens the Select dropdown. Use `size="sm"` for a shorter trigger
+ * (h-8); defaults to `"default"` (h-9).
+ */
 function SelectTrigger({
   className,
   size = "default",
@@ -54,6 +61,7 @@ function SelectTrigger({
   );
 }
 
+/** Floating dropdown panel containing the list of items. */
 function SelectContent({
   className,
   children,
@@ -96,6 +104,7 @@ function SelectContent({
   );
 }
 
+/** Muted label rendered above a SelectGroup. */
 function SelectLabel({
   className,
   ...props
@@ -109,6 +118,7 @@ function SelectLabel({
   );
 }
 
+/** A single option within SelectContent; shows a checkmark when selected. */
 function SelectItem({
   className,
   children,
@@ -137,6 +147,7 @@ function SelectItem({
   );
 }
 
+/** Thin horizontal rule for visually separating groups of items. */
 function SelectSeparator({
   className,
   ...props
@@ -153,6 +164,7 @@ function SelectSeparator({
   );
 }
 
+/** Arrow button shown at the top of the list when there are items scrolled out of view above. */
 function SelectScrollUpButton({
   className,
   ...props
@@ -171,6 +183,7 @@ function SelectScrollUpButton({
   );
 }
 
+/** Arrow button shown at the bottom of the list when there are items scrolled out of view below. */
 function SelectScrollDownButton({
   className,
   ...props
