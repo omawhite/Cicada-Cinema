@@ -1,14 +1,21 @@
 import { InstagramIcon } from "./icons/InstagramIcon";
 import { LetterboxdIcon } from "./icons/LetterboxdIcon";
 
+/** A single text link rendered in the footer nav. */
 interface FooterLink {
+  /** URL the link points to. */
   href: string;
+  /** Display text for the link. */
   label: string;
 }
 
+/** Props for the site-wide Footer component. */
 interface FooterProps {
+  /** Text nav links rendered on the left side of the footer. */
   links?: FooterLink[];
+  /** URL for the Instagram profile icon link. */
   instagramUrl?: string;
+  /** URL for the Letterboxd profile icon link. */
   letterboxdUrl?: string;
 }
 
@@ -23,8 +30,8 @@ export function Footer({
   letterboxdUrl = "https://letterboxd.com/cicada_cinema",
 }: FooterProps) {
   return (
-    <footer className="bg-black h-[100px] flex items-center justify-end px-[50px]">
-      <div className="flex items-center gap-[30px]">
+    <footer className="bg-black h-25 flex items-center justify-end px-12.5">
+      <div className="flex items-center gap-7.5">
         <nav className="flex items-center gap-6">
           {links.map(({ href, label }) => (
             <a
@@ -43,7 +50,7 @@ export function Footer({
             rel="noopener noreferrer"
             aria-label="Letterboxd"
           >
-            <LetterboxdIcon className="size-[30px]" />
+            <LetterboxdIcon className="size-7.5" />
           </a>
           <a
             href={instagramUrl}
@@ -52,7 +59,7 @@ export function Footer({
             aria-label="Instagram"
             className="text-white"
           >
-            <InstagramIcon className="size-[25px]" />
+            <InstagramIcon className="size-6.25" />
           </a>
         </div>
       </div>

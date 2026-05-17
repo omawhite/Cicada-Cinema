@@ -1,6 +1,8 @@
 const DEFAULT_BANNER = "/Cicada_Curtain_CROP_2.png";
 
+/** Props for the full-width banner image component. */
 interface BannerProps {
+  /** Src for the banner image. Defaults to the Cicada curtain crop. */
   src?: string;
 }
 

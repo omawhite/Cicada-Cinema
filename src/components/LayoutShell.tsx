@@ -2,7 +2,9 @@ import type { ReactNode } from "react";
 import { Header } from "./Header";
 import { Footer } from "./Footer";
 
+/** Props for the root layout wrapper that composes Header, main content, and Footer. */
 interface LayoutShellProps {
+  /** Page content rendered inside the main element. */
   children?: ReactNode;
 }
 
