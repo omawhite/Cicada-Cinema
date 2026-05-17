@@ -17,6 +17,9 @@ importers:
       '@fontsource-variable/roboto':
         specifier: ^5.2.10
         version: 5.2.10
+      '@storybook/addon-themes':
+        specifier: ^10.4.0
+        version: 10.4.0(storybook@10.4.0(@emnapi/core@1.9.2)(@emnapi/runtime@1.10.0)(@testing-library/dom@10.4.1)(@types/react@19.2.14)(prettier@3.8.3)(react-dom@19.2.6(react@19.2.6))(react@19.2.6))
       '@tailwindcss/vite':
         specifier: ^4.3.0
         version: 4.3.0(vite@7.3.3(@types/node@25.8.0)(jiti@2.7.0)(lightningcss@1.32.0)(yaml@2.9.0))
@@ -1662,6 +1665,11 @@ packages:
 
   '@storybook/addon-onboarding@10.4.0':
     resolution: {integrity: sha512-y7YNj8uI+l8A/Fa05lfvsSxI1Tjz7pT03WHSY+LnA0uZHWkw/mP4PXD0mEp6E/lSby4cviwpcg30wafaQe7TbA==}
+    peerDependencies:
+      storybook: ^10.4.0
+
+  '@storybook/addon-themes@10.4.0':
+    resolution: {integrity: sha512-ctHlkFBaKOOj4fBkc/cFWLn5CVXDIquAh3qSuebxweQU+wbcTESoZ/jkOEbntSvSHqoCqZDdfTXYOG/EWHQzGQ==}
     peerDependencies:
       storybook: ^10.4.0
 
@@ -6195,6 +6203,11 @@ snapshots:
   '@storybook/addon-onboarding@10.4.0(storybook@10.4.0(@emnapi/core@1.9.2)(@emnapi/runtime@1.10.0)(@testing-library/dom@10.4.1)(@types/react@19.2.14)(prettier@3.8.3)(react-dom@19.2.6(react@19.2.6))(react@19.2.6))':
     dependencies:
       storybook: 10.4.0(@emnapi/core@1.9.2)(@emnapi/runtime@1.10.0)(@testing-library/dom@10.4.1)(@types/react@19.2.14)(prettier@3.8.3)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
+
+  '@storybook/addon-themes@10.4.0(storybook@10.4.0(@emnapi/core@1.9.2)(@emnapi/runtime@1.10.0)(@testing-library/dom@10.4.1)(@types/react@19.2.14)(prettier@3.8.3)(react-dom@19.2.6(react@19.2.6))(react@19.2.6))':
+    dependencies:
+      storybook: 10.4.0(@emnapi/core@1.9.2)(@emnapi/runtime@1.10.0)(@testing-library/dom@10.4.1)(@types/react@19.2.14)(prettier@3.8.3)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
+      ts-dedent: 2.2.0
 
   '@storybook/addon-vitest@10.4.0(@vitest/browser-playwright@4.1.6)(@vitest/browser@4.1.6)(@vitest/runner@4.1.6)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(storybook@10.4.0(@emnapi/core@1.9.2)(@emnapi/runtime@1.10.0)(@testing-library/dom@10.4.1)(@types/react@19.2.14)(prettier@3.8.3)(react-dom@19.2.6(react@19.2.6))(react@19.2.6))(vitest@4.1.6)':
     dependencies:
