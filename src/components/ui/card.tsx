@@ -2,6 +2,10 @@ import * as React from "react"
 
 import { cn } from "@/lib/utils"
 
+/**
+ * Card container. Use `size="sm"` for a more compact layout with tighter
+ * padding and gap; defaults to `"default"`.
+ */
 function Card({
   className,
   size = "default",
@@ -20,6 +24,7 @@ function Card({
   )
 }
 
+/** Top section of a Card; lays out title, description, and optional action in a grid. */
 function CardHeader({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
@@ -33,6 +38,7 @@ function CardHeader({ className, ...props }: React.ComponentProps<"div">) {
   )
 }
 
+/** Primary heading text within a CardHeader. */
 function CardTitle({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
@@ -43,6 +49,7 @@ function CardTitle({ className, ...props }: React.ComponentProps<"div">) {
   )
 }
 
+/** Secondary, muted description text beneath the CardTitle. */
 function CardDescription({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
@@ -53,6 +60,7 @@ function CardDescription({ className, ...props }: React.ComponentProps<"div">) {
   )
 }
 
+/** Optional action slot (e.g. a button or badge) pinned to the top-right of CardHeader. */
 function CardAction({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
@@ -66,6 +74,7 @@ function CardAction({ className, ...props }: React.ComponentProps<"div">) {
   )
 }
 
+/** Main body content area of a Card. */
 function CardContent({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
@@ -76,6 +85,7 @@ function CardContent({ className, ...props }: React.ComponentProps<"div">) {
   )
 }
 
+/** Bottom section of a Card; typically used for actions or metadata. */
 function CardFooter({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div

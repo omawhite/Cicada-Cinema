@@ -4,6 +4,7 @@ import * as React from "react";
 
 import { cn } from "@/lib/utils";
 
+/** Responsive table wrapper; overflows horizontally on small screens. */
 function Table({ className, ...props }: React.ComponentProps<"table">) {
   return (
     <div
@@ -19,6 +20,7 @@ function Table({ className, ...props }: React.ComponentProps<"table">) {
   );
 }
 
+/** `<thead>` wrapper; adds a bottom border to each contained row. */
 function TableHeader({ className, ...props }: React.ComponentProps<"thead">) {
   return (
     <thead
@@ -29,6 +31,7 @@ function TableHeader({ className, ...props }: React.ComponentProps<"thead">) {
   );
 }
 
+/** `<tbody>` wrapper; removes the border from the last row. */
 function TableBody({ className, ...props }: React.ComponentProps<"tbody">) {
   return (
     <tbody
@@ -39,6 +42,7 @@ function TableBody({ className, ...props }: React.ComponentProps<"tbody">) {
   );
 }
 
+/** `<tfoot>` wrapper with a muted background; typically holds summary rows. */
 function TableFooter({ className, ...props }: React.ComponentProps<"tfoot">) {
   return (
     <tfoot
@@ -52,6 +56,7 @@ function TableFooter({ className, ...props }: React.ComponentProps<"tfoot">) {
   );
 }
 
+/** `<tr>` with hover and selected-state styles. */
 function TableRow({ className, ...props }: React.ComponentProps<"tr">) {
   return (
     <tr
@@ -65,12 +70,13 @@ function TableRow({ className, ...props }: React.ComponentProps<"tr">) {
   );
 }
 
+/** `<th>` column header cell; non-wrapping with medium font weight. */
 function TableHead({ className, ...props }: React.ComponentProps<"th">) {
   return (
     <th
       data-slot="table-head"
       className={cn(
-        "h-12 px-3 text-left align-middle font-medium whitespace-nowrap text-foreground [&:has([role=checkbox])]:pr-0",
+        "h-12 px-3 text-left align-middle font-medium whitespace-nowrap text-foreground has-[[role=checkbox]]:pr-0",
         className,
       )}
       {...props}
@@ -78,12 +84,13 @@ function TableHead({ className, ...props }: React.ComponentProps<"th">) {
   );
 }
 
+/** `<td>` data cell; non-wrapping with consistent padding. */
 function TableCell({ className, ...props }: React.ComponentProps<"td">) {
   return (
     <td
       data-slot="table-cell"
       className={cn(
-        "p-3 align-middle whitespace-nowrap [&:has([role=checkbox])]:pr-0",
+        "p-3 align-middle whitespace-nowrap has-[[role=checkbox]]:pr-0",
         className,
       )}
       {...props}
@@ -91,6 +98,7 @@ function TableCell({ className, ...props }: React.ComponentProps<"td">) {
   );
 }
 
+/** `<caption>` rendered below the table in muted text. */
 function TableCaption({
   className,
   ...props

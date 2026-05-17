@@ -4,6 +4,10 @@ import { cva } from "class-variance-authority"
 import { cn } from "@/lib/utils"
 import { ChevronDownIcon } from "lucide-react"
 
+/**
+ * Root navigation menu container. `align` controls how the floating dropdown
+ * panel aligns to the trigger — passed through to the internal Positioner.
+ */
 function NavigationMenu({
   align = "start",
   className,
@@ -26,6 +30,7 @@ function NavigationMenu({
   )
 }
 
+/** Horizontal list of NavigationMenuItems. */
 function NavigationMenuList({
   className,
   ...props
@@ -42,6 +47,7 @@ function NavigationMenuList({
   )
 }
 
+/** A single entry in the NavigationMenuList; wraps a link or a trigger+content pair. */
 function NavigationMenuItem({
   className,
   ...props
@@ -59,6 +65,7 @@ const navigationMenuTriggerStyle = cva(
   "group/navigation-menu-trigger inline-flex h-9 w-max items-center justify-center rounded-3xl px-4.5 py-2.5 text-sm transition-all outline-none hover:underline focus:underline focus-visible:ring-3 focus-visible:ring-ring/30 focus-visible:outline-1 disabled:pointer-events-none disabled:opacity-50 data-popup-open:underline data-open:underline"
 )
 
+/** Button that opens the associated NavigationMenuContent dropdown. */
 function NavigationMenuTrigger({
   className,
   children,
@@ -76,6 +83,7 @@ function NavigationMenuTrigger({
   )
 }
 
+/** Dropdown panel revealed when the paired NavigationMenuTrigger is open. */
 function NavigationMenuContent({
   className,
   ...props
@@ -121,6 +129,7 @@ function NavigationMenuPositioner({
   )
 }
 
+/** A styled anchor used directly in the nav (no dropdown) or inside NavigationMenuContent. */
 function NavigationMenuLink({
   className,
   ...props
@@ -137,6 +146,7 @@ function NavigationMenuLink({
   )
 }
 
+/** Optional animated indicator (arrow/caret) that tracks the active item. */
 function NavigationMenuIndicator({
   className,
   ...props

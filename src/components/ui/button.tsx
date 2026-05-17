@@ -38,6 +38,10 @@ const buttonVariants = cva(
   },
 );
 
+/**
+ * Styled button built on Base UI. Accepts all native button props plus
+ * `variant` and `size` from `buttonVariants`.
+ */
 function Button({
   className,
   variant = "default",
