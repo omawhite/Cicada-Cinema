@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { expect, within } from "storybook/test";
+import { expect, userEvent, within } from "storybook/test";
 import { Header } from "../Header";
 const logoSrc = "/Cicada_Cinema_2024_icon_5-circle-white_80x@2x.png";
 
@@ -41,24 +41,34 @@ export const CustomLinks: Story = {
   args: {
     navLinks: [
       { href: "/", label: "Home" },
-      { href: "/films", label: "Films" },
+      {
+        label: "Films",
+        children: [
+          { href: "/films/now-showing", label: "Now Showing", description: "Currently screening" },
+          { href: "/films/coming-soon", label: "Coming Soon", description: "Upcoming releases" },
+          { href: "/films/archive", label: "Archive", description: "Past screenings" },
+        ],
+      },
       { href: "/about", label: "About" },
       { href: "/contact", label: "Contact" },
     ],
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-    await expect(canvas.getByRole("link", { name: /films/i })).toHaveAttribute(
-      "href",
-      "/films",
-    );
     await expect(canvas.getByRole("link", { name: /about/i })).toHaveAttribute(
       "href",
       "/about",
     );
+    await expect(canvas.getByRole("link", { name: /contact/i })).toHaveAttribute(
+      "href",
+      "/contact",
+    );
+    const filmsTrigger = canvas.getByRole("button", { name: /films/i });
+    await expect(filmsTrigger).toBeVisible();
+    await userEvent.click(filmsTrigger);
     await expect(
-      canvas.getByRole("link", { name: /contact/i }),
-    ).toHaveAttribute("href", "/contact");
+      canvas.getByRole("link", { name: /now showing/i }),
+    ).toHaveAttribute("href", "/films/now-showing");
   },
 };
 
