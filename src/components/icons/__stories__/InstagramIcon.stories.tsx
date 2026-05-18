@@ -13,6 +13,13 @@ const meta = {
       values: [{ name: "dark", value: "#000000" }],
     },
   },
+  argTypes: {
+    className: {
+      control: false,
+      description:
+        "Tailwind classes for size and color (e.g. size-8 text-white)",
+    },
+  },
 } satisfies Meta<typeof InstagramIcon>;
 
 export default meta;

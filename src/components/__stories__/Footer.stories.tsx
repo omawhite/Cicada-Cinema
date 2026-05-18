@@ -17,12 +17,21 @@ const meta = {
       url: "https://www.figma.com/design/2roOfYg6qLTIwboYmbSmEM/Cicada-website?node-id=313-1049&t=umYsDzs4QKnbAgdw-1",
     },
   },
+  argTypes: {
+    instagramUrl: { control: "text" },
+    letterboxdUrl: { control: "text" },
+    links: { control: false },
+  },
 } satisfies Meta<typeof Footer>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
+  args: {
+    instagramUrl: "https://instagram.com/cicada_cinema",
+    letterboxdUrl: "https://letterboxd.com/cicada_cinema",
+  },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     await expect(canvas.getByText("Contact Us")).toBeVisible();
