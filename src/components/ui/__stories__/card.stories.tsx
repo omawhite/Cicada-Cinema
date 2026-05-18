@@ -8,7 +8,7 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "./card";
+} from "../card";
 
 const meta = {
   title: "UI/Card",
@@ -83,7 +83,9 @@ export const Small: Story = {
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     const card = canvas.getByRole("article", { hidden: true });
-    await expect(card ?? canvasElement.querySelector("[data-slot='card']")).toBeTruthy();
+    await expect(
+      card ?? canvasElement.querySelector("[data-slot='card']"),
+    ).toBeTruthy();
     await expect(canvas.getByText("Rear Window")).toBeVisible();
   },
 };
@@ -192,14 +194,12 @@ export const AllSizes: Story = {
         <Card size="default">
           <CardHeader>
             <CardTitle>Jeanne Dielman</CardTitle>
-            <CardDescription>
-              Chantal Akerman · 1975 · 201 min
-            </CardDescription>
+            <CardDescription>Chantal Akerman · 1975 · 201 min</CardDescription>
           </CardHeader>
           <CardContent>
             <p>
-              Three days in the life of a widowed mother and part-time
-              sex worker in Brussels, observed with radical precision.
+              Three days in the life of a widowed mother and part-time sex
+              worker in Brussels, observed with radical precision.
             </p>
           </CardContent>
         </Card>
@@ -211,14 +211,12 @@ export const AllSizes: Story = {
         <Card size="sm">
           <CardHeader>
             <CardTitle>Jeanne Dielman</CardTitle>
-            <CardDescription>
-              Chantal Akerman · 1975 · 201 min
-            </CardDescription>
+            <CardDescription>Chantal Akerman · 1975 · 201 min</CardDescription>
           </CardHeader>
           <CardContent>
             <p>
-              Three days in the life of a widowed mother and part-time
-              sex worker in Brussels, observed with radical precision.
+              Three days in the life of a widowed mother and part-time sex
+              worker in Brussels, observed with radical precision.
             </p>
           </CardContent>
         </Card>
