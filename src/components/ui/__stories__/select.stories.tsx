@@ -12,7 +12,7 @@ import {
 } from "../select";
 
 const meta = {
-  title: "UI/Select",
+  title: "Base UI/Select",
   component: SelectTrigger,
   tags: ["autodocs"],
   decorators: [

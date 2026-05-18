@@ -10,7 +10,7 @@ import {
 } from "../navigation-menu";
 
 const meta = {
-  title: "UI/NavigationMenu",
+  title: "Base UI/NavigationMenu",
   component: NavigationMenu,
   tags: ["autodocs"],
   decorators: [
@@ -79,9 +79,7 @@ export const WithDropdown: Story = {
     const trigger = canvas.getByRole("button", { name: /screenings/i });
     await expect(trigger).toBeVisible();
     await userEvent.click(trigger);
-    await expect(
-      canvas.getByRole("link", { name: "Upcoming" }),
-    ).toBeVisible();
+    await expect(canvas.getByRole("link", { name: "Upcoming" })).toBeVisible();
   },
 };
 
@@ -123,9 +121,13 @@ export const MultipleDropdowns: Story = {
         <NavigationMenuItem>
           <NavigationMenuTrigger>About</NavigationMenuTrigger>
           <NavigationMenuContent>
-            <NavigationMenuLink href="/about/mission">Mission</NavigationMenuLink>
+            <NavigationMenuLink href="/about/mission">
+              Mission
+            </NavigationMenuLink>
             <NavigationMenuLink href="/about/team">Team</NavigationMenuLink>
-            <NavigationMenuLink href="/about/contact">Contact</NavigationMenuLink>
+            <NavigationMenuLink href="/about/contact">
+              Contact
+            </NavigationMenuLink>
           </NavigationMenuContent>
         </NavigationMenuItem>
       </NavigationMenuList>

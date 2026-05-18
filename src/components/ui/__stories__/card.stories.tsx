@@ -11,7 +11,7 @@ import {
 } from "../card";
 
 const meta = {
-  title: "UI/Card",
+  title: "Base UI/Card",
   component: Card,
   tags: ["autodocs"],
   argTypes: {
