@@ -13,6 +13,9 @@ const meta = {
   title: "Base UI/NavigationMenu",
   component: NavigationMenu,
   tags: ["autodocs"],
+  argTypes: {
+    align: { control: "radio", options: ["start", "center", "end"] },
+  },
   decorators: [
     (Story) => (
       <div className="flex items-start justify-center p-8">
@@ -26,8 +29,11 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  render: () => (
-    <NavigationMenu>
+  args: {
+    align: "start",
+  },
+  render: (args) => (
+    <NavigationMenu align={args.align}>
       <NavigationMenuList>
         <NavigationMenuItem>
           <NavigationMenuLink href="/">Home</NavigationMenuLink>

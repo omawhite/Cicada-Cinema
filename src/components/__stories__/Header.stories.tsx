@@ -18,6 +18,10 @@ const meta = {
       url: "https://www.figma.com/design/2roOfYg6qLTIwboYmbSmEM/Cicada-website?node-id=80-198&t=umYsDzs4QKnbAgdw-1",
     },
   },
+  argTypes: {
+    logoSrc: { control: false, description: "URL of the logo image" },
+    navLinks: { control: false },
+  },
   args: {
     logoSrc,
   },
@@ -44,9 +48,21 @@ export const CustomLinks: Story = {
       {
         label: "Films",
         children: [
-          { href: "/films/now-showing", label: "Now Showing", description: "Currently screening" },
-          { href: "/films/coming-soon", label: "Coming Soon", description: "Upcoming releases" },
-          { href: "/films/archive", label: "Archive", description: "Past screenings" },
+          {
+            href: "/films/now-showing",
+            label: "Now Showing",
+            description: "Currently screening",
+          },
+          {
+            href: "/films/coming-soon",
+            label: "Coming Soon",
+            description: "Upcoming releases",
+          },
+          {
+            href: "/films/archive",
+            label: "Archive",
+            description: "Past screenings",
+          },
         ],
       },
       { href: "/about", label: "About" },
@@ -59,10 +75,9 @@ export const CustomLinks: Story = {
       "href",
       "/about",
     );
-    await expect(canvas.getByRole("link", { name: /contact/i })).toHaveAttribute(
-      "href",
-      "/contact",
-    );
+    await expect(
+      canvas.getByRole("link", { name: /contact/i }),
+    ).toHaveAttribute("href", "/contact");
     const filmsTrigger = canvas.getByRole("button", { name: /films/i });
     await expect(filmsTrigger).toBeVisible();
     await userEvent.click(filmsTrigger);
