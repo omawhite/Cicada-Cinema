@@ -17,7 +17,15 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-function Swatch({ name, cssVar, fg }: { name: string; cssVar: string; fg?: string }) {
+function Swatch({
+  name,
+  cssVar,
+  fg,
+}: {
+  name: string;
+  cssVar: string;
+  fg?: string;
+}) {
   return (
     <div
       style={{
@@ -33,11 +41,20 @@ function Swatch({ name, cssVar, fg }: { name: string; cssVar: string; fg?: strin
   );
 }
 
-function SwatchGroup({ tokens }: { tokens: { name: string; var: string; fg?: string }[] }) {
+function SwatchGroup({
+  tokens,
+}: {
+  tokens: { name: string; var: string; fg?: string }[];
+}) {
   return (
     <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 font-sans">
       {tokens.map((token) => (
-        <Swatch key={token.var} name={token.name} cssVar={token.var} fg={token.fg} />
+        <Swatch
+          key={token.var}
+          name={token.name}
+          cssVar={token.var}
+          fg={token.fg}
+        />
       ))}
     </div>
   );
@@ -45,7 +62,11 @@ function SwatchGroup({ tokens }: { tokens: { name: string; var: string; fg?: str
 
 export const Core: Story = {
   parameters: {
-    docs: { description: { story: "The base surface and text colors applied to `<body>`." } },
+    docs: {
+      description: {
+        story: "The base surface and text colors applied to `<body>`.",
+      },
+    },
   },
   render: () => (
     <SwatchGroup
@@ -59,13 +80,21 @@ export const Core: Story = {
 
 export const Primary: Story = {
   parameters: {
-    docs: { description: { story: "Used for primary actions, links, and focus indicators." } },
+    docs: {
+      description: {
+        story: "Used for primary actions, links, and focus indicators.",
+      },
+    },
   },
   render: () => (
     <SwatchGroup
       tokens={[
         { name: "primary", var: "--primary", fg: "--primary-foreground" },
-        { name: "primary-foreground", var: "--primary-foreground", fg: "--primary" },
+        {
+          name: "primary-foreground",
+          var: "--primary-foreground",
+          fg: "--primary",
+        },
       ]}
     />
   ),
@@ -73,13 +102,22 @@ export const Primary: Story = {
 
 export const Secondary: Story = {
   parameters: {
-    docs: { description: { story: "Used for secondary buttons and lower-emphasis interactive elements." } },
+    docs: {
+      description: {
+        story:
+          "Used for secondary buttons and lower-emphasis interactive elements.",
+      },
+    },
   },
   render: () => (
     <SwatchGroup
       tokens={[
         { name: "secondary", var: "--secondary", fg: "--secondary-foreground" },
-        { name: "secondary-foreground", var: "--secondary-foreground", fg: "--secondary" },
+        {
+          name: "secondary-foreground",
+          var: "--secondary-foreground",
+          fg: "--secondary",
+        },
       ]}
     />
   ),
@@ -87,7 +125,11 @@ export const Secondary: Story = {
 
 export const Muted: Story = {
   parameters: {
-    docs: { description: { story: "Subdued backgrounds and placeholder / helper text." } },
+    docs: {
+      description: {
+        story: "Subdued backgrounds and placeholder / helper text.",
+      },
+    },
   },
   render: () => (
     <SwatchGroup
@@ -101,13 +143,22 @@ export const Muted: Story = {
 
 export const Accent: Story = {
   parameters: {
-    docs: { description: { story: "Hover and selected states for interactive items like menu rows." } },
+    docs: {
+      description: {
+        story:
+          "Hover and selected states for interactive items like menu rows.",
+      },
+    },
   },
   render: () => (
     <SwatchGroup
       tokens={[
         { name: "accent", var: "--accent", fg: "--accent-foreground" },
-        { name: "accent-foreground", var: "--accent-foreground", fg: "--accent" },
+        {
+          name: "accent-foreground",
+          var: "--accent-foreground",
+          fg: "--accent",
+        },
       ]}
     />
   ),
@@ -115,7 +166,9 @@ export const Accent: Story = {
 
 export const Card: Story = {
   parameters: {
-    docs: { description: { story: "Surface and text colors for Card components." } },
+    docs: {
+      description: { story: "Surface and text colors for Card components." },
+    },
   },
   render: () => (
     <SwatchGroup
@@ -129,13 +182,22 @@ export const Card: Story = {
 
 export const Popover: Story = {
   parameters: {
-    docs: { description: { story: "Surface and text colors for floating elements like dropdowns and tooltips." } },
+    docs: {
+      description: {
+        story:
+          "Surface and text colors for floating elements like dropdowns and tooltips.",
+      },
+    },
   },
   render: () => (
     <SwatchGroup
       tokens={[
         { name: "popover", var: "--popover", fg: "--popover-foreground" },
-        { name: "popover-foreground", var: "--popover-foreground", fg: "--popover" },
+        {
+          name: "popover-foreground",
+          var: "--popover-foreground",
+          fg: "--popover",
+        },
       ]}
     />
   ),
@@ -143,11 +205,18 @@ export const Popover: Story = {
 
 export const Destructive: Story = {
   parameters: {
-    docs: { description: { story: "Used for error states, delete actions, and destructive confirmations." } },
+    docs: {
+      description: {
+        story:
+          "Used for error states, delete actions, and destructive confirmations.",
+      },
+    },
   },
   render: () => (
     <SwatchGroup
-      tokens={[{ name: "destructive", var: "--destructive", fg: "--background" }]}
+      tokens={[
+        { name: "destructive", var: "--destructive", fg: "--background" },
+      ]}
     />
   ),
 };
@@ -155,7 +224,12 @@ export const Destructive: Story = {
 export const BordersAndFocus: Story = {
   name: "Borders & Focus",
   parameters: {
-    docs: { description: { story: "`border` and `input` define stroke colors; `ring` is the focus outline color." } },
+    docs: {
+      description: {
+        story:
+          "`border` and `input` define stroke colors; `ring` is the focus outline color.",
+      },
+    },
   },
   render: () => (
     <SwatchGroup
@@ -170,7 +244,12 @@ export const BordersAndFocus: Story = {
 
 export const Chart: Story = {
   parameters: {
-    docs: { description: { story: "Sequential scale for data visualizations, from lightest (1) to darkest (5)." } },
+    docs: {
+      description: {
+        story:
+          "Sequential scale for data visualizations, from lightest (1) to darkest (5).",
+      },
+    },
   },
   render: () => (
     <SwatchGroup
@@ -187,19 +266,52 @@ export const Chart: Story = {
 
 export const Sidebar: Story = {
   parameters: {
-    docs: { description: { story: "Dedicated tokens for the sidebar surface, keeping it visually distinct from the main canvas." } },
+    docs: {
+      description: {
+        story:
+          "Dedicated tokens for the sidebar surface, keeping it visually distinct from the main canvas.",
+      },
+    },
   },
   render: () => (
     <SwatchGroup
       tokens={[
         { name: "sidebar", var: "--sidebar", fg: "--sidebar-foreground" },
-        { name: "sidebar-foreground", var: "--sidebar-foreground", fg: "--sidebar" },
-        { name: "sidebar-primary", var: "--sidebar-primary", fg: "--sidebar-primary-foreground" },
-        { name: "sidebar-primary-foreground", var: "--sidebar-primary-foreground", fg: "--sidebar-primary" },
-        { name: "sidebar-accent", var: "--sidebar-accent", fg: "--sidebar-accent-foreground" },
-        { name: "sidebar-accent-foreground", var: "--sidebar-accent-foreground", fg: "--sidebar-accent" },
-        { name: "sidebar-border", var: "--sidebar-border", fg: "--sidebar-foreground" },
-        { name: "sidebar-ring", var: "--sidebar-ring", fg: "--sidebar-foreground" },
+        {
+          name: "sidebar-foreground",
+          var: "--sidebar-foreground",
+          fg: "--sidebar",
+        },
+        {
+          name: "sidebar-primary",
+          var: "--sidebar-primary",
+          fg: "--sidebar-primary-foreground",
+        },
+        {
+          name: "sidebar-primary-foreground",
+          var: "--sidebar-primary-foreground",
+          fg: "--sidebar-primary",
+        },
+        {
+          name: "sidebar-accent",
+          var: "--sidebar-accent",
+          fg: "--sidebar-accent-foreground",
+        },
+        {
+          name: "sidebar-accent-foreground",
+          var: "--sidebar-accent-foreground",
+          fg: "--sidebar-accent",
+        },
+        {
+          name: "sidebar-border",
+          var: "--sidebar-border",
+          fg: "--sidebar-foreground",
+        },
+        {
+          name: "sidebar-ring",
+          var: "--sidebar-ring",
+          fg: "--sidebar-foreground",
+        },
       ]}
     />
   ),
