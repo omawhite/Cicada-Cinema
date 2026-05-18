@@ -37,13 +37,14 @@ export const Paragraph: Story = {
   render: () => (
     <div>
       <p className="leading-7">
-        The king, seeing how much happier his subjects were, realized the error of his ways and
-        repealed the joke tax. The people celebrated with much merriment and, of course, many
-        jokes at the king&apos;s expense.
+        The king, seeing how much happier his subjects were, realized the error
+        of his ways and repealed the joke tax. The people celebrated with much
+        merriment and, of course, many jokes at the king&apos;s expense.
       </p>
       <p className="leading-7 mt-6">
-        Not to be outdone, King Jokester VII began to tell his own jokes. And he was funny, too.
-        In fact, he was so funny that people forgot about the joke tax altogether.
+        Not to be outdone, King Jokester VII began to tell his own jokes. And he
+        was funny, too. In fact, he was so funny that people forgot about the
+        joke tax altogether.
       </p>
     </div>
   ),
@@ -52,8 +53,8 @@ export const Paragraph: Story = {
 export const Blockquote: Story = {
   render: () => (
     <blockquote className="mt-6 border-l-2 pl-6 italic">
-      &ldquo;After all,&rdquo; he said, &ldquo;everyone enjoys a good joke, so it&apos;s only
-      fair that they should pay for the privilege.&rdquo;
+      &ldquo;After all,&rdquo; he said, &ldquo;everyone enjoys a good joke, so
+      it&apos;s only fair that they should pay for the privilege.&rdquo;
     </blockquote>
   ),
 };
