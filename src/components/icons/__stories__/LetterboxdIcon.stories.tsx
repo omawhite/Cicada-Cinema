@@ -3,7 +3,7 @@ import { expect, within } from "storybook/test";
 import { LetterboxdIcon } from "../LetterboxdIcon";
 
 const meta = {
-  title: "Components/Icons/LetterboxdIcon",
+  title: "Icons/LetterboxdIcon",
   component: LetterboxdIcon,
   tags: ["autodocs"],
   parameters: {

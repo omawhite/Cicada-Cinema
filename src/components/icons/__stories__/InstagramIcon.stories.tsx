@@ -3,7 +3,7 @@ import { expect, within } from "storybook/test";
 import { InstagramIcon } from "../InstagramIcon";
 
 const meta = {
-  title: "Components/Icons/InstagramIcon",
+  title: "Icons/InstagramIcon",
   component: InstagramIcon,
   tags: ["autodocs"],
   parameters: {
