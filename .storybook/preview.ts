@@ -27,7 +27,8 @@ const preview: Preview = {
     },
   },
   decorators: [
-    // @ts-expect-error - Not sure how to fix the typing here and it's not worth the effort since everything still works.
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore - Not sure how to fix the typing here and it's not worth the effort since everything still works.
     withThemeByClassName({
       themes: {
         light: "",
