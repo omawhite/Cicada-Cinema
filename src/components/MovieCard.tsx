@@ -1,18 +1,18 @@
-import { cn } from "@/lib/utils"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
+import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
 
 interface MovieCardProps {
-  title: string
-  price: string
-  posterSrc: string
-  posterAlt?: string
-  movieTimes?: string[]
-  selectedTime?: string
-  onTimeSelect?: (time: string) => void
-  ctaLabel?: string
-  onCtaClick?: () => void
-  className?: string
+  title: string;
+  price: string;
+  posterSrc: string;
+  posterAlt?: string;
+  movieTimes?: string[];
+  selectedTime?: string;
+  onTimeSelect?: (time: string) => void;
+  ctaLabel?: string;
+  onCtaClick?: () => void;
+  className?: string;
 }
 
 export function MovieCard({
@@ -51,7 +51,7 @@ export function MovieCard({
                   "rounded-md border px-2 py-1 text-sm transition-colors",
                   time === selectedTime
                     ? "border-foreground bg-foreground text-background"
-                    : "border-border text-muted-foreground hover:border-foreground/40 hover:text-foreground"
+                    : "border-border text-muted-foreground hover:border-foreground/40 hover:text-foreground",
                 )}
               >
                 {time}
@@ -67,5 +67,5 @@ export function MovieCard({
         </Button>
       </CardContent>
     </Card>
-  )
+  );
 }
