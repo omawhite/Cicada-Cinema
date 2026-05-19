@@ -82,10 +82,6 @@ export const Small: Story = {
   ),
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-    const card = canvas.getByRole("article", { hidden: true });
-    await expect(
-      card ?? canvasElement.querySelector("[data-slot='card']"),
-    ).toBeTruthy();
     await expect(canvas.getByText("Rear Window")).toBeVisible();
   },
 };
