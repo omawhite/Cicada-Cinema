@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { expect, userEvent, within } from "storybook/test";
+import { expect, screen, userEvent, waitFor, within } from "storybook/test";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -85,7 +85,9 @@ export const WithDropdown: Story = {
     const trigger = canvas.getByRole("button", { name: /screenings/i });
     await expect(trigger).toBeVisible();
     await userEvent.click(trigger);
-    await expect(canvas.getByRole("link", { name: "Upcoming" })).toBeVisible();
+    // Content renders in a portal (outside canvasElement), so use screen.
+    // NavigationMenuLink in dropdown doesn't carry role="link", so query by text.
+    await waitFor(() => expect(screen.getByText("Upcoming")).toBeVisible());
   },
 };
 
