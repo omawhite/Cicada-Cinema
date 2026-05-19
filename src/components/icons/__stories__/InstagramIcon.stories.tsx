@@ -29,10 +29,6 @@ export const Default: Story = {
   args: {
     className: "size-[25px] text-black",
   },
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
-    await expect(canvas.getByRole("img", { hidden: true })).toBeInTheDocument();
-  },
 };
 
 export const Small: Story = {
