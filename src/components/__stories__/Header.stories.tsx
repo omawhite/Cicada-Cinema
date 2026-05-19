@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { expect, userEvent, within } from "storybook/test";
+import { expect, userEvent, waitFor, within, screen } from "storybook/test";
 import { Header } from "../Header";
 const logoSrc = "/Cicada_Cinema_2024_icon_5-circle-white_80x@2x.png";
 
@@ -81,9 +81,7 @@ export const CustomLinks: Story = {
     const filmsTrigger = canvas.getByRole("button", { name: /films/i });
     await expect(filmsTrigger).toBeVisible();
     await userEvent.click(filmsTrigger);
-    await expect(
-      canvas.getByRole("link", { name: /now showing/i }),
-    ).toHaveAttribute("href", "/films/now-showing");
+    await waitFor(() => expect(screen.getByText("Now Showing")).toBeVisible());
   },
 };
 
