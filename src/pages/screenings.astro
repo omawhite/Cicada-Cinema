@@ -1,0 +1,13 @@
+---
+import SimpleTixPinboard from "@/components/SimpleTixPinboard.astro";
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="Screenings — Cicada Cinema">
+  <link slot="head" href="https://embed.prod.simpletix.com/assets/widget/widget.min.css?t=2026.02.18" rel="stylesheet" />
+  <script slot="head" is:inline src="https://embed.prod.simpletix.com/assets/widget/widget.min.js?t=2026.03.23" defer></script>
+  <div class="max-w-6xl mx-auto px-8 py-10">
+    <h1 class="text-3xl font-bold mb-8">Screenings</h1>
+    <SimpleTixPinboard />
+  </div>
+</Layout>
