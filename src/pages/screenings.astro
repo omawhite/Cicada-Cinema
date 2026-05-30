@@ -4,6 +4,9 @@ import { ScreeningCard } from "@/components/ScreeningCard";
 import Layout from "../layouts/Layout.astro";
 
 const apiKey = import.meta.env.ZEFFY_API_KEY as string;
+if (!apiKey) {
+  console.error("[screenings] ZEFFY_API_KEY is not set");
+}
 let campaigns: ZeffyCampaign[] = [];
 let fetchError = false;
 try {
