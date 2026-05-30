@@ -10,6 +10,7 @@
   "observability": {
     "enabled": true,
   },
+  // Attempting to  automatically connect to existing KV namespace.
   "kv_namespaces": [
     { "binding": "SESSION", "id": "161f170c4d6a456c8bf56bf57d8b9ef1" },
   ],
