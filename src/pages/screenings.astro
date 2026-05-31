@@ -3,6 +3,8 @@ import { fetchCampaigns, type ZeffyCampaign } from "@/lib/zeffy";
 import { ScreeningCard } from "@/components/ScreeningCard";
 import Layout from "../layouts/Layout.astro";
 
+export const prerender = false;
+
 const apiKey = import.meta.env.ZEFFY_API_KEY as string;
 if (!apiKey) {
   console.error("[screenings] ZEFFY_API_KEY is not set");
