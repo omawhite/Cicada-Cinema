@@ -12,9 +12,12 @@ import {
 } from "../select";
 
 const meta = {
-  title: "UI/Select",
+  title: "Base UI/Select",
   component: SelectTrigger,
   tags: ["autodocs"],
+  argTypes: {
+    size: { table: { disable: true } },
+  },
   decorators: [
     (Story) => (
       <div className="flex items-start p-8">
@@ -28,9 +31,12 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  render: () => (
+  args: {
+    size: "default",
+  },
+  render: (args) => (
     <Select>
-      <SelectTrigger className="w-48">
+      <SelectTrigger {...args} className="w-48">
         <SelectValue placeholder="Select a genre" />
       </SelectTrigger>
       <SelectContent>

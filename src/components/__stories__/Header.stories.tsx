@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { expect, within } from "storybook/test";
+import { expect, userEvent, waitFor, within, screen } from "storybook/test";
 import { Header } from "../Header";
 const logoSrc = "/Cicada_Cinema_2024_icon_5-circle-white_80x@2x.png";
 
@@ -8,11 +8,20 @@ const meta = {
   component: Header,
   tags: ["autodocs"],
   parameters: {
+    controls: { disable: true },
     layout: "fullscreen",
     backgrounds: {
       default: "dark",
       values: [{ name: "dark", value: "#000000" }],
     },
+    design: {
+      type: "figma",
+      url: "https://www.figma.com/design/2roOfYg6qLTIwboYmbSmEM/Cicada-website?node-id=80-198&t=umYsDzs4QKnbAgdw-1",
+    },
+  },
+  argTypes: {
+    logoSrc: { control: false, description: "URL of the logo image" },
+    navLinks: { control: false },
   },
   args: {
     logoSrc,
@@ -37,17 +46,32 @@ export const CustomLinks: Story = {
   args: {
     navLinks: [
       { href: "/", label: "Home" },
-      { href: "/films", label: "Films" },
+      {
+        label: "Films",
+        children: [
+          {
+            href: "/films/now-showing",
+            label: "Now Showing",
+            description: "Currently screening",
+          },
+          {
+            href: "/films/coming-soon",
+            label: "Coming Soon",
+            description: "Upcoming releases",
+          },
+          {
+            href: "/films/archive",
+            label: "Archive",
+            description: "Past screenings",
+          },
+        ],
+      },
       { href: "/about", label: "About" },
       { href: "/contact", label: "Contact" },
     ],
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-    await expect(canvas.getByRole("link", { name: /films/i })).toHaveAttribute(
-      "href",
-      "/films",
-    );
     await expect(canvas.getByRole("link", { name: /about/i })).toHaveAttribute(
       "href",
       "/about",
@@ -55,6 +79,10 @@ export const CustomLinks: Story = {
     await expect(
       canvas.getByRole("link", { name: /contact/i }),
     ).toHaveAttribute("href", "/contact");
+    const filmsTrigger = canvas.getByRole("button", { name: /films/i });
+    await expect(filmsTrigger).toBeVisible();
+    await userEvent.click(filmsTrigger);
+    await waitFor(() => expect(screen.getByText("Now Showing")).toBeVisible());
   },
 };
 

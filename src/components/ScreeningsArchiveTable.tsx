@@ -23,7 +23,9 @@ import {
 } from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
 
+/** Props for the sortable, filterable archive table. */
 interface ScreeningsArchiveTableProps {
+  /** Full list of archived screenings to display. */
   screenings: ArchivedScreening[];
 }
 

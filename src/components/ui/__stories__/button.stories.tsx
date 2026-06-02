@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { expect, userEvent, within } from "storybook/test";
-import { Button } from "./button";
+import { Button } from "../button";
 
 const meta = {
-  title: "UI/Button",
+  title: "Base UI/Button",
   component: Button,
   tags: ["autodocs"],
   argTypes: {

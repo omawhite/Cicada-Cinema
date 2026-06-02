@@ -1,12 +1,36 @@
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+} from "@/components/ui/navigation-menu";
+
 const DEFAULT_LOGO = "/Cicada_Cinema_2024_icon_5-circle-white_80x@2x.png";
 
+/** A single navigation link, optionally with a dropdown of child links. */
 interface NavLink {
-  href: string;
+  /** URL for a direct link. Omit when `children` is provided. */
+  href?: string;
+  /** Display text for the link or dropdown trigger. */
   label: string;
+  /** Child links rendered inside a dropdown panel. */
+  children?: {
+    /** URL for the child link. */
+    href: string;
+    /** Display text for the child link. */
+    label: string;
+    /** Optional subtitle shown beneath the label in the dropdown. */
+    description?: string;
+  }[];
 }
 
+/** Props for the site-wide Header component. */
 interface HeaderProps {
+  /** Src for the logo image. Defaults to the Cicada Cinema icon. */
   logoSrc?: string;
+  /** Navigation links rendered in the menu. Defaults to a single Home link. */
   navLinks?: NavLink[];
 }
 
@@ -25,17 +49,40 @@ export function Header({ logoSrc, navLinks = defaultNavLinks }: HeaderProps) {
             className="w-[4.5rem] h-[4.5rem]"
           />
         </a>
-        <nav className="flex items-center space-x-6 ml-8">
-          {navLinks.map(({ href, label }) => (
-            <a
-              key={href}
-              href={href}
-              className="text-white no-underline hover:text-gray-300 transition-colors duration-200"
-            >
-              {label}
-            </a>
-          ))}
-        </nav>
+        <NavigationMenu className="ml-8">
+          <NavigationMenuList>
+            {navLinks.map(({ href, label, children }) => (
+              <NavigationMenuItem key={label}>
+                {children ? (
+                  <>
+                    <NavigationMenuTrigger>{label}</NavigationMenuTrigger>
+                    <NavigationMenuContent>
+                      <ul className="flex flex-col gap-1 p-1 w-48">
+                        {children.map((child) => (
+                          <li key={child.href}>
+                            <NavigationMenuLink
+                              href={child.href}
+                              className="flex flex-col"
+                            >
+                              <span className="font-medium">{child.label}</span>
+                              {child.description && (
+                                <span className="text-xs text-muted-foreground">
+                                  {child.description}
+                                </span>
+                              )}
+                            </NavigationMenuLink>
+                          </li>
+                        ))}
+                      </ul>
+                    </NavigationMenuContent>
+                  </>
+                ) : (
+                  <NavigationMenuLink href={href}>{label}</NavigationMenuLink>
+                )}
+              </NavigationMenuItem>
+            ))}
+          </NavigationMenuList>
+        </NavigationMenu>
       </div>
     </header>
   );
