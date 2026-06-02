@@ -11,7 +11,7 @@ interface FooterLink {
 
 /** Props for the site-wide Footer component. */
 interface FooterProps {
-  /** Text nav links rendered on the left side of the footer. */
+  /** Text nav links rendered on the footer. */
   links?: FooterLink[];
   /** URL for the Instagram profile icon link. */
   instagramUrl?: string;
