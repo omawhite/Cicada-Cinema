@@ -8,6 +8,7 @@ const meta = {
   component: Header,
   tags: ["autodocs"],
   parameters: {
+    controls: { disable: true },
     layout: "fullscreen",
     backgrounds: {
       default: "dark",
