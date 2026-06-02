@@ -14,7 +14,7 @@ const meta = {
   },
   argTypes: {
     className: {
-      control: false,
+      table: { disable: true },
       description:
         "Tailwind classes for size and color (e.g. size-8 text-white)",
     },
