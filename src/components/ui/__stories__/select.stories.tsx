@@ -16,7 +16,7 @@ const meta = {
   component: SelectTrigger,
   tags: ["autodocs"],
   argTypes: {
-    size: { control: "radio", options: ["default", "sm"] },
+    size: { table: { disable: true } },
   },
   decorators: [
     (Story) => (
