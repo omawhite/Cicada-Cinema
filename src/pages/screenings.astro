@@ -1,0 +1,47 @@
+---
+import { fetchCampaigns, type ZeffyCampaign } from "@/lib/zeffy";
+import { ScreeningCard } from "@/components/ScreeningsCard";
+import Layout from "../layouts/Layout.astro";
+
+export const prerender = false;
+console.log("[screenings] Fetching Zeffy campaigns...");
+const apiKey = import.meta.env.ZEFFY_API_KEY as string;
+if (!apiKey) {
+  console.error("[screenings] ZEFFY_API_KEY is not set");
+}
+let campaigns: ZeffyCampaign[] = [];
+let fetchError = false;
+try {
+  campaigns = await fetchCampaigns(apiKey);
+} catch (e) {
+  console.error("[screenings] Failed to fetch Zeffy campaigns:", e);
+  fetchError = true;
+}
+---
+
+<Layout title="Screenings – Cicada Cinema">
+  <div class="max-w-6xl mx-auto px-8 py-12">
+    <h1 class="font-heading text-3xl font-bold mb-8">Upcoming Screenings</h1>
+    {
+      fetchError && (
+        <p class="text-muted-foreground">
+          Could not load screenings. Please try again later.
+        </p>
+      )
+    }
+    {
+      !fetchError && campaigns.length === 0 && (
+        <p class="text-muted-foreground">No upcoming screenings.</p>
+      )
+    }
+    {
+      !fetchError && campaigns.length > 0 && (
+        <div class="flex flex-wrap gap-6">
+          {campaigns.map((campaign) => (
+            <ScreeningCard campaign={campaign} client:load />
+          ))}
+        </div>
+      )
+    }
+  </div>
+</Layout>
