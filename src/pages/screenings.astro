@@ -5,6 +5,7 @@ import Layout from "../layouts/Layout.astro";
 
 export const prerender = false;
 console.log("[screenings] Fetching Zeffy campaigns...");
+//IMPORTANT! I think setting this as a string is making it so this gets inlined at buildtime.......
 const apiKey = import.meta.env.ZEFFY_API_KEY as string;
 if (!apiKey) {
   console.error("[screenings] ZEFFY_API_KEY is not set");
