@@ -14,7 +14,7 @@ const meta = {
   component: NavigationMenu,
   tags: ["autodocs"],
   argTypes: {
-    align: { control: "radio", options: ["start", "center", "end"] },
+    align: { table: { disable: true } },
   },
   decorators: [
     (Story) => (
