@@ -16,6 +16,13 @@ const meta = {
     posterSrc: "https://placehold.co/239x313",
     ctaLabel: "Book Tickets",
   },
+  argTypes: {
+    posterAlt: { table: { disable: true } },
+    selectedTime: { table: { disable: true } },
+    onTimeSelect: { table: { disable: true } },
+    onCtaClick: { table: { disable: true } },
+    className: { table: { disable: true } },
+  },
 } satisfies Meta<typeof MovieCard>;
 
 export default meta;
