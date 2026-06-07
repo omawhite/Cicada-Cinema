@@ -4,21 +4,13 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Commands
 
-```sh
-pnpm dev             # Start dev server at localhost:4321
-pnpm build           # Build to ./dist/
-pnpm lint            # Run ESLint
-pnpm format          # Run Prettier (write)
-pnpm format:check    # Check formatting without writing
-pnpm typecheck       # Run astro check (TypeScript) — alias: pnpm astro:check
-pnpm test            # Run all Vitest projects (passes with no tests)
-pnpm test:unit       # Run the unit Vitest project only
-pnpm test:storybook  # Run the storybook Vitest project only
-pnpm storybook       # Start Storybook at localhost:6006
-pnpm build-storybook # Build Storybook to static output
-pnpm deploy          # Deploy to Cloudflare Workers via wrangler (production)
-pnpm deploy:preview  # Upload a preview version via wrangler
-```
+Use **pnpm** for everything. See the `scripts` field in [`package.json`](package.json)
+for the full, authoritative list of available commands.
+
+`package.json` is also the source of truth for the runtime:
+
+- **Node version** — the `engines.node` field. Match it locally and in CI.
+- **Package manager** — the `packageManager` field pins the pnpm version; use pnpm, not npm or yarn.
 
 To run a single test file: `pnpm vitest run <path/to/test>`
 
