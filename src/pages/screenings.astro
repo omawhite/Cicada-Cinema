@@ -1,0 +1,15 @@
+---
+export const prerender = false;
+
+import Layout from "../layouts/Layout.astro";
+import { ScreeningsList } from "@/components/ScreeningsList";
+import { getActiveEventSeries } from "@/lib/current-screenings";
+
+const screenings = await getActiveEventSeries();
+---
+
+<Layout title="Screenings — Cicada Cinema">
+  <div class="container mx-auto px-4 py-8">
+    <ScreeningsList screenings={screenings} client:load />
+  </div>
+</Layout>

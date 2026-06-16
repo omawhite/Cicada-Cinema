@@ -1,0 +1,25 @@
+---
+export const prerender = false;
+
+import Layout from "../../layouts/Layout.astro";
+import { ScreeningDetail } from "@/components/ScreeningDetail";
+import { getActiveEventSeriesById } from "@/lib/current-screenings";
+
+const { id } = Astro.params;
+
+if (!id) {
+  return Astro.redirect("/screenings");
+}
+
+const screening = await getActiveEventSeriesById(id);
+
+if (!screening) {
+  return Astro.redirect("/screenings");
+}
+---
+
+<Layout title={`${screening.name} — Cicada Cinema`}>
+  <div class="container mx-auto px-4 py-8">
+    <ScreeningDetail screening={screening} client:load />
+  </div>
+</Layout>

@@ -8,10 +8,15 @@ interface LayoutShellProps {
   children?: ReactNode;
 }
 
+const navLinks = [
+  { href: "/", label: "Home" },
+  { href: "/screenings", label: "Screenings" },
+];
+
 export function LayoutShell({ children }: LayoutShellProps) {
   return (
     <div className="flex flex-col min-h-screen">
-      <Header />
+      <Header navLinks={navLinks} />
       <main className="flex-1">{children}</main>
       <Footer />
     </div>
