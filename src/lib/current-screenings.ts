@@ -130,25 +130,46 @@ function isUpcoming(event: TicketTailorEvent): boolean {
   return new Date(event.start.iso).getTime() > Date.now();
 }
 
+export interface ScreeningWithEvents extends TicketTailorEventSeries {
+  /** Upcoming published events (dated occurrences) belonging to this series, soonest first. */
+  events: TicketTailorEvent[];
+}
+
+function groupUpcomingEventsBySeries(
+  events: TicketTailorEvent[],
+): Map<string, TicketTailorEvent[]> {
+  const bySeriesId = new Map<string, TicketTailorEvent[]>();
+  for (const event of events.filter(isUpcoming)) {
+    if (!event.event_series_id) continue;
+    const existing = bySeriesId.get(event.event_series_id) ?? [];
+    existing.push(event);
+    bySeriesId.set(event.event_series_id, existing);
+  }
+  for (const list of bySeriesId.values()) {
+    list.sort(
+      (a, b) => new Date(a.start.iso).getTime() - new Date(b.start.iso).getTime(),
+    );
+  }
+  return bySeriesId;
+}
+
 /** A screening is "active" when its series is published and it has at least one upcoming published event. */
-export async function getActiveEventSeries(): Promise<
-  TicketTailorEventSeries[]
-> {
+export async function getActiveEventSeries(): Promise<ScreeningWithEvents[]> {
   const [series, events] = await Promise.all([
     getEventSeries({ status: "published" }),
     getEvents({ status: "published" }),
   ]);
 
-  const activeSeriesIds = new Set(
-    events.filter(isUpcoming).map((event) => event.event_series_id),
-  );
+  const upcomingBySeriesId = groupUpcomingEventsBySeries(events);
 
-  return series.filter((s) => activeSeriesIds.has(s.id));
+  return series
+    .filter((s) => upcomingBySeriesId.has(s.id))
+    .map((s) => ({ ...s, events: upcomingBySeriesId.get(s.id) ?? [] }));
 }
 
 export async function getActiveEventSeriesById(
   eventSeriesId: string,
-): Promise<TicketTailorEventSeries | null> {
+): Promise<ScreeningWithEvents | null> {
   const [series, events] = await Promise.all([
     getEventSeriesById(eventSeriesId),
     getEvents({ status: "published" }),
@@ -158,9 +179,11 @@ export async function getActiveEventSeriesById(
     return null;
   }
 
-  const isActive = events.some(
-    (event) => event.event_series_id === eventSeriesId && isUpcoming(event),
-  );
+  const upcomingEvents = groupUpcomingEventsBySeries(events).get(eventSeriesId);
 
-  return isActive ? series : null;
+  if (!upcomingEvents) {
+    return null;
+  }
+
+  return { ...series, events: upcomingEvents };
 }

@@ -6,10 +6,22 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import type { TicketTailorEventSeries } from "@/lib/types/ticket-tailor";
+import type { ScreeningWithEvents } from "@/lib/current-screenings";
+
+const MAX_VISIBLE_DATES = 5;
+
+function formatEventDateTime(start: { iso: string }): string {
+  return new Date(start.iso).toLocaleString("en-US", {
+    month: "short",
+    day: "numeric",
+    hour: "numeric",
+    minute: "2-digit",
+    hour12: true,
+  });
+}
 
 interface ScreeningCardProps {
-  screening: TicketTailorEventSeries;
+  screening: ScreeningWithEvents;
 }
 
 function ScreeningCard({ screening }: ScreeningCardProps) {
@@ -32,7 +44,21 @@ function ScreeningCard({ screening }: ScreeningCardProps) {
         <CardTitle className="line-clamp-2">{screening.name}</CardTitle>
         {venueName && <CardDescription>{venueName}</CardDescription>}
       </CardHeader>
-      <CardContent className="flex-1" />
+      <CardContent className="flex flex-1 flex-wrap gap-2">
+        {screening.events.slice(0, MAX_VISIBLE_DATES).map((event) => (
+          <span
+            key={event.id}
+            className="rounded-full bg-muted px-3 py-1 text-xs text-muted-foreground"
+          >
+            {formatEventDateTime(event.start)}
+          </span>
+        ))}
+        {screening.events.length > MAX_VISIBLE_DATES && (
+          <span className="rounded-full bg-muted px-3 py-1 text-xs text-muted-foreground">
+            +{screening.events.length - MAX_VISIBLE_DATES} more
+          </span>
+        )}
+      </CardContent>
       <CardFooter>
         <a
           href={`/screenings/${screening.id}`}
@@ -46,7 +72,7 @@ function ScreeningCard({ screening }: ScreeningCardProps) {
 }
 
 interface ScreeningsListProps {
-  screenings: TicketTailorEventSeries[];
+  screenings: ScreeningWithEvents[];
 }
 
 export function ScreeningsList({ screenings }: ScreeningsListProps) {
