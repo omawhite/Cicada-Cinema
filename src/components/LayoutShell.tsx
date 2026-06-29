@@ -11,7 +11,12 @@ interface LayoutShellProps {
 export function LayoutShell({ children }: LayoutShellProps) {
   return (
     <div className="flex flex-col min-h-screen">
-      <Header />
+      <Header
+        navLinks={[
+          { href: "/", label: "Home" },
+          { href: "/screenings-archive", label: "Archive" },
+        ]}
+      />
       <main className="flex-1">{children}</main>
       <Footer />
     </div>
