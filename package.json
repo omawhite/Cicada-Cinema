@@ -45,7 +45,7 @@
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.9",
-    "@astrojs/cloudflare": "^13.6.1",
+    "@astrojs/cloudflare": "^13.7.0",
     "@chromatic-com/storybook": "^5.2.1",
     "@storybook/addon-a11y": "^10.4.2",
     "@storybook/addon-docs": "^10.4.2",
