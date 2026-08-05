@@ -9,6 +9,7 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
+    "preview": "astro build && wrangler dev",
     "astro": "astro",
     "deploy": "wrangler deploy",
     "deploy:preview": "wrangler versions upload",
