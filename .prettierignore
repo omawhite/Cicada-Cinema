@@ -1,6 +1,7 @@
 dist/
 .astro/
 .claude/
+.github/
 pnpm-lock.yaml
 README.md
 *.mdx
