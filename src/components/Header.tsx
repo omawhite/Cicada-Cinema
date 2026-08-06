@@ -34,22 +34,36 @@ interface HeaderProps {
   navLinks?: NavLink[];
 }
 
-const defaultNavLinks: NavLink[] = [{ href: "/", label: "Home" }];
+const defaultNavLinks: NavLink[] = [
+  { href: "/showtimes", label: "Showtimes" },
+  { href: "/archive", label: "Archive" },
+  { href: "/newsletter", label: "Newsletter" },
+  {
+    label: "About Us",
+    children: [
+      { href: "/mission", label: "Our Mission" },
+      { href: "/get-involved", label: "Get Involved" },
+      { href: "/membership", label: "Membership" },
+      { href: "/rental", label: "Rental" },
+      { href: "/contact", label: "Contact Us" },
+    ],
+  },
+];
 
 export function Header({ logoSrc, navLinks = defaultNavLinks }: HeaderProps) {
   return (
-    <header className="bg-black text-white py-4 px-8">
-      <div className="max-w-6xl mx-auto flex items-center justify-start">
-        <a href="/" className="flex items-center">
-          <img
-            src={logoSrc ?? DEFAULT_LOGO}
-            alt="Cicada Cinema"
-            width="60"
-            height="60"
-            className="w-[4.5rem] h-[4.5rem]"
-          />
-        </a>
-        <NavigationMenu className="ml-8">
+    <header className="bg-black text-white h-25 px-15 flex items-center justify-between">
+      <a href="/" className="flex items-center">
+        <img
+          src={logoSrc ?? DEFAULT_LOGO}
+          alt="Cicada Cinema"
+          width="100"
+          height="100"
+          className="size-25"
+        />
+      </a>
+      <div className="flex items-center gap-11">
+        <NavigationMenu>
           <NavigationMenuList>
             {navLinks.map(({ href, label, children }) => (
               <NavigationMenuItem key={label}>
@@ -83,6 +97,12 @@ export function Header({ logoSrc, navLinks = defaultNavLinks }: HeaderProps) {
             ))}
           </NavigationMenuList>
         </NavigationMenu>
+        <a
+          href="#"
+          className="bg-[#767676] text-white rounded-lg px-4 py-2.5 text-lg hover:bg-[#767676]/80"
+        >
+          Donate
+        </a>
       </div>
     </header>
   );
