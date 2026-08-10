@@ -1,12 +1,7 @@
 import { useId, useState, type SubmitEvent } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import {
-  Field,
-  FieldDescription,
-  FieldGroup,
-  FieldLabel,
-} from "@/components/ui/field";
+import { Field, FieldGroup, FieldLabel } from "@/components/ui/field";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import {
   Card,
@@ -91,9 +86,6 @@ export function NewsletterSignup({
                 onChange={(event) => setEmail(event.target.value)}
                 disabled={status === "submitting"}
               />
-              <FieldDescription>
-                We&apos;ll never share your email.
-              </FieldDescription>
             </Field>
             <Button type="submit" disabled={status === "submitting"}>
               {status === "submitting" ? "Signing up..." : "Sign up"}
