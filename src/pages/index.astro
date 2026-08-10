@@ -1,11 +1,12 @@
 ---
 import { Banner } from "@/components/Banner";
+import { NewsletterSignup } from "@/components/NewsletterSignup";
 import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout>
   <Banner />
   <div class="m-8">
-    <p class="text-center">More coming soon!</p>
+    <NewsletterSignup client:load />
   </div>
 </Layout>
