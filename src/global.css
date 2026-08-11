@@ -4,14 +4,11 @@
 
 @custom-variant dark (&:is(.dark *));
 
-/*
- * Web-licensed .woff2 files are not yet in public/fonts/ (see the README
- * there) — until they're added, these fail to load and the site falls back
- * to the system sans stack below.
- */
 @font-face {
   font-family: "Reuben";
-  src: url("/fonts/reuben-regular.woff2") format("woff2");
+  src:
+    url("/fonts/reuben-regular.woff2") format("woff2"),
+    url("/fonts/reuben-regular.woff") format("woff");
   font-weight: 400;
   font-style: normal;
   font-display: optional;
@@ -19,7 +16,9 @@
 
 @font-face {
   font-family: "Florensans";
-  src: url("/fonts/florensans-regular.woff2") format("woff2");
+  src:
+    url("/fonts/florensans-regular.woff2") format("woff2"),
+    url("/fonts/florensans-regular.woff") format("woff");
   font-weight: 400;
   font-style: normal;
   font-display: optional;
