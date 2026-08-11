@@ -9,7 +9,7 @@ interface BannerProps {
 export function Banner({ src }: BannerProps) {
   return (
     <div
-      className="relative w-full h-80 md:h-96 lg:h-128 overflow-hidden border-t-2 border-b-2"
+      className="relative w-full h-80 md:h-96 lg:h-128 overflow-hidden border-b-2"
       style={{
         borderImage:
           "linear-gradient(to right, transparent, rgba(255,255,255,0.3), transparent) 1",
