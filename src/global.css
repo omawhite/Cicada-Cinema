@@ -11,7 +11,7 @@
     url("/fonts/reuben-regular.woff") format("woff");
   font-weight: 400;
   font-style: normal;
-  font-display: optional;
+  font-display: swap;
 }
 
 @font-face {
@@ -21,7 +21,7 @@
     url("/fonts/florensans-regular.woff") format("woff");
   font-weight: 400;
   font-style: normal;
-  font-display: optional;
+  font-display: swap;
 }
 
 @theme inline {
