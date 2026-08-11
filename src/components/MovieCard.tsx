@@ -38,7 +38,7 @@ export function MovieCard({
           />
         </div>
         <div className="flex flex-col gap-1">
-          <p className="font-heading text-xl font-medium">{title}</p>
+          <p className="font-heading text-xl">{title}</p>
           <p className="text-lg">{price}</p>
         </div>
         {movieTimes && movieTimes.length > 0 && (
