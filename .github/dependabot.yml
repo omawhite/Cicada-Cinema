@@ -12,6 +12,10 @@ updates:
           - '@astrojs/*'
           - 'eslint-plugin-astro'
           - 'prettier-plugin-astro'
+          - 'wrangler'
+          - '@cloudflare/*'
+          - 'miniflare'
+          - 'workerd'
         update-types:
           - 'major'
           - 'minor'

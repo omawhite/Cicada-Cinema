@@ -19,7 +19,7 @@ const { title = "Cicada Cinema" } = Astro.props;
     <title>{title}</title>
   </head>
   <body>
-    <LayoutShell>
+    <LayoutShell client:load>
       <slot />
     </LayoutShell>
   </body>
