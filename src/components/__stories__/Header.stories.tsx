@@ -18,6 +18,7 @@ const meta = {
       type: "figma",
       url: "https://www.figma.com/design/2roOfYg6qLTIwboYmbSmEM/Cicada-website?node-id=80-198&t=umYsDzs4QKnbAgdw-1",
     },
+    chromatic: { viewports: [375, 768, 1280] },
   },
   argTypes: {
     logoSrc: { control: false, description: "URL of the logo image" },
@@ -127,5 +128,70 @@ export const MinimalNav: Story = {
       "href",
       "#",
     );
+  },
+};
+
+export const MobileNarrow: Story = {
+  parameters: {
+    viewport: { defaultViewport: "mobile2" },
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+
+    await expect(canvas.getByAltText("Cicada Cinema")).toBeVisible();
+    await expect(
+      window.innerWidth >= document.documentElement.scrollWidth - 1,
+    ).toBe(true);
+
+    await expect(
+      canvas.queryByRole("link", { name: /showtimes/i }),
+    ).not.toBeInTheDocument();
+    await expect(
+      canvas.queryByRole("button", { name: /about us/i }),
+    ).not.toBeInTheDocument();
+
+    const menuButton = canvas.getByRole("button", { name: /open menu/i });
+    await expect(menuButton).toBeVisible();
+    await userEvent.click(menuButton);
+
+    const showtimesLink = await screen.findByRole("link", {
+      name: /showtimes/i,
+    });
+    await expect(showtimesLink).toBeVisible();
+
+    await expect(screen.queryByText("Our Mission")).not.toBeInTheDocument();
+    const aboutUsTrigger = await screen.findByRole("button", {
+      name: /about us/i,
+    });
+    await userEvent.click(aboutUsTrigger);
+    await waitFor(() => expect(screen.getByText("Our Mission")).toBeVisible());
+
+    await userEvent.click(showtimesLink);
+    await waitFor(() =>
+      expect(screen.queryByRole("link", { name: /showtimes/i })).toBeNull(),
+    );
+  },
+};
+
+export const MobileNarrowCustomLinks: Story = {
+  args: CustomLinks.args,
+  parameters: {
+    viewport: { defaultViewport: "mobile2" },
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const menuButton = canvas.getByRole("button", { name: /open menu/i });
+    await userEvent.click(menuButton);
+
+    const filmsTrigger = await screen.findByRole("button", {
+      name: /films/i,
+    });
+    await expect(screen.queryByText("Now Showing")).not.toBeInTheDocument();
+    await userEvent.click(filmsTrigger);
+    await waitFor(() => expect(screen.getByText("Now Showing")).toBeVisible());
+
+    await expect(
+      screen.getByRole("link", { name: /^about$/i }),
+    ).toHaveAttribute("href", "/about");
   },
 };
