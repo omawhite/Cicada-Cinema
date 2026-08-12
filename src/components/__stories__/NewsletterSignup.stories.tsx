@@ -23,9 +23,9 @@ export const Default: Story = {};
 export const Submitted: Story = {
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-    const input = canvas.getByPlaceholderText("you@example.com");
+    const input = canvas.getByPlaceholderText("Email");
     await userEvent.type(input, "reader@example.com");
-    await userEvent.click(canvas.getByRole("button", { name: /sign up/i }));
+    await userEvent.click(canvas.getByRole("button", { name: /subscribe/i }));
     await waitFor(() =>
       expect(canvas.getByText("You're on the list!")).toBeVisible(),
     );
@@ -35,11 +35,11 @@ export const Submitted: Story = {
 export const InvalidEmail: Story = {
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-    const input = canvas.getByPlaceholderText("you@example.com");
+    const input = canvas.getByPlaceholderText("Email");
     await userEvent.type(input, "not-an-email");
-    await userEvent.click(canvas.getByRole("button", { name: /sign up/i }));
+    await userEvent.click(canvas.getByRole("button", { name: /subscribe/i }));
     await expect(input).toBeInvalid();
-    await expect(canvas.getByText("Join the newsletter")).toBeVisible();
+    await expect(canvas.getByText("Subscribe to our email list")).toBeVisible();
     await expect(
       canvas.queryByText("You're on the list!"),
     ).not.toBeInTheDocument();
@@ -52,9 +52,9 @@ export const SignupFailed: Story = {
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-    const input = canvas.getByPlaceholderText("you@example.com");
+    const input = canvas.getByPlaceholderText("Email");
     await userEvent.type(input, "reader@example.com");
-    await userEvent.click(canvas.getByRole("button", { name: /sign up/i }));
+    await userEvent.click(canvas.getByRole("button", { name: /subscribe/i }));
     await waitFor(() =>
       expect(canvas.getByText("Something went wrong")).toBeVisible(),
     );

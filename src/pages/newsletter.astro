@@ -4,7 +4,9 @@ import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout title="Newsletter | Cicada Cinema">
-  <div class="m-8">
-    <NewsletterSignup client:load />
+  <div class="max-w-3xl mx-auto px-6 py-16">
+    <section class="bg-black px-6 py-16 flex justify-center">
+      <NewsletterSignup client:load />
+    </section>
   </div>
 </Layout>
