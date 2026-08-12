@@ -6,7 +6,7 @@ import Layout from "../layouts/Layout.astro";
 
 <Layout>
   <Banner />
-  <div class="max-w-3xl mx-auto px-6 py-16">
+  <section class="max-w-3xl mx-auto px-6 py-16">
     <h1 class="text-4xl font-bold mb-6">
       Cicada Cinema is opening a movie theater!
     </h1>
@@ -15,18 +15,22 @@ import Layout from "../layouts/Layout.astro";
       northwest side, and we need your help! Click the button below to learn
       more about the new theater and how you can provide support.
     </p>
-    <section class="bg-black px-2 py-16 flex justify-center">
+  </section>
+
+  <section class="bg-black">
+    <div class="max-w-3xl mx-auto px-6 py-16 flex justify-center">
       <NewsletterSignup client:load />
-    </section>
-    <section class="space-y-4 mt-4">
-      <h2 class="text-2xl font-semibold">Unique movie-going experiences</h2>
-      <p class="mb-4 leading-relaxed">
-        Cicada Cinema is a nonprofit movie theater in Bloomington, IN. Our
-        mission is to provide high-quality screenings of underrepresented cinema
-        - the old, the new, and the locally created. Volunteer run and community
-        driven, Cicada Cinema aims to create an independent space for film and
-        film lovers.
-      </p>
-    </section>
-  </div>
+    </div>
+  </section>
+
+  <section class="max-w-3xl mx-auto px-6 py-16 space-y-4">
+    <h2 class="text-2xl font-semibold">Unique movie-going experiences</h2>
+    <p class="mb-4 leading-relaxed">
+      Cicada Cinema is a nonprofit movie theater in Bloomington, IN. Our mission
+      is to provide high-quality screenings of underrepresented cinema - the
+      old, the new, and the locally created. Volunteer run and community driven,
+      Cicada Cinema aims to create an independent space for film and film
+      lovers.
+    </p>
+  </section>
 </Layout>
