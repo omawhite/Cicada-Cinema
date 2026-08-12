@@ -37,59 +37,63 @@ export function NewsletterSignup({
 
   if (status === "submitted") {
     return (
-      <Alert>
-        <AlertTitle>You&apos;re on the list!</AlertTitle>
-        <AlertDescription>
-          We&apos;ll email {email} when we have news to share.
-        </AlertDescription>
-      </Alert>
+      <div className="max-w-3xl mx-auto px-6 py-16 flex justify-center bg-black">
+        <Alert>
+          <AlertTitle>You&apos;re on the list!</AlertTitle>
+          <AlertDescription>
+            We&apos;ll email {email} when we have news to share.
+          </AlertDescription>
+        </Alert>
+      </div>
     );
   }
 
   return (
-    <div>
-      <h2 className="text-2xl font-semibold text-white">
-        Subscribe to our email list
-      </h2>
-      <p className="mb-4 leading-relaxed text-white/70">
-        Stay up to date on upcoming films and events!
-      </p>
-      {status === "error" && (
-        <Alert variant="destructive" className="mb-4">
-          <AlertTitle>Something went wrong</AlertTitle>
-          <AlertDescription>
-            We couldn&apos;t sign you up. Please try again.
-          </AlertDescription>
-        </Alert>
-      )}
-      <form onSubmit={handleSubmit} className="max-w-sm">
-        <FieldGroup>
-          <Field orientation="horizontal">
-            <FieldLabel htmlFor={emailId} className="sr-only">
-              Email
-            </FieldLabel>
-            <Input
-              id={emailId}
-              type="email"
-              required
-              placeholder="Email"
-              value={email}
-              onChange={(event) => setEmail(event.target.value)}
-              disabled={status === "submitting"}
-            />
-            <Button
-              type="submit"
-              size="icon"
-              disabled={status === "submitting"}
-              aria-label={
-                status === "submitting" ? "Signing up..." : "Subscribe"
-              }
-            >
-              <ArrowRight />
-            </Button>
-          </Field>
-        </FieldGroup>
-      </form>
+    <div className="max-w-3xl mx-auto px-6 py-16 flex justify-center bg-black">
+      <div>
+        <h2 className="text-2xl font-semibold text-white">
+          Subscribe to our email list
+        </h2>
+        <p className="mb-4 leading-relaxed text-white/70">
+          Stay up to date on upcoming films and events!
+        </p>
+        {status === "error" && (
+          <Alert variant="destructive" className="mb-4">
+            <AlertTitle>Something went wrong</AlertTitle>
+            <AlertDescription>
+              We couldn&apos;t sign you up. Please try again.
+            </AlertDescription>
+          </Alert>
+        )}
+        <form onSubmit={handleSubmit} className="max-w-sm">
+          <FieldGroup>
+            <Field orientation="horizontal">
+              <FieldLabel htmlFor={emailId} className="sr-only">
+                Email
+              </FieldLabel>
+              <Input
+                id={emailId}
+                type="email"
+                required
+                placeholder="Email"
+                value={email}
+                onChange={(event) => setEmail(event.target.value)}
+                disabled={status === "submitting"}
+              />
+              <Button
+                type="submit"
+                size="icon"
+                disabled={status === "submitting"}
+                aria-label={
+                  status === "submitting" ? "Signing up..." : "Subscribe"
+                }
+              >
+                <ArrowRight />
+              </Button>
+            </Field>
+          </FieldGroup>
+        </form>
+      </div>
     </div>
   );
 }
