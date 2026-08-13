@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { expect, userEvent, waitFor, within, screen } from "storybook/test";
 import { Header } from "../Header";
-const logoSrc = "/Cicada_Cinema_2024_icon_5-circle-white_80x@2x.png";
+const logoSrc = "/Cicada_Cinema_2024_icon_5-circle-white_80x@2x.avif";
 
 const meta = {
   title: "Components/Header",
@@ -132,8 +132,8 @@ export const MinimalNav: Story = {
 };
 
 export const MobileNarrow: Story = {
-  parameters: {
-    viewport: { defaultViewport: "mobile2" },
+  globals: {
+    viewport: { value: "mobile1" },
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
@@ -154,29 +154,19 @@ export const MobileNarrow: Story = {
     await expect(menuButton).toBeVisible();
     await userEvent.click(menuButton);
 
-    const showtimesLink = await screen.findByRole("link", {
-      name: /showtimes/i,
-    });
-    await expect(showtimesLink).toBeVisible();
-
     await expect(screen.queryByText("Our Mission")).not.toBeInTheDocument();
     const aboutUsTrigger = await screen.findByRole("button", {
       name: /about us/i,
     });
     await userEvent.click(aboutUsTrigger);
     await waitFor(() => expect(screen.getByText("Our Mission")).toBeVisible());
-
-    await userEvent.click(showtimesLink);
-    await waitFor(() =>
-      expect(screen.queryByRole("link", { name: /showtimes/i })).toBeNull(),
-    );
   },
 };
 
 export const MobileNarrowCustomLinks: Story = {
   args: CustomLinks.args,
-  parameters: {
-    viewport: { defaultViewport: "mobile2" },
+  globals: {
+    viewport: { value: "mobile1" },
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);

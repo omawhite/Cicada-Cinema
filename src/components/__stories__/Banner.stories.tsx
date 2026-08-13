@@ -48,8 +48,32 @@ export const Default: Story = {
 };
 
 export const MobileNarrow: Story = {
-  parameters: {
-    viewport: { defaultViewport: "mobile2" },
+  globals: {
+    viewport: { value: "mobile1" },
+  },
+  play: async ({ canvasElement }) => {
+    await expectMinimalCrop(canvasElement);
+    await expect(
+      window.innerWidth >= document.documentElement.scrollWidth - 1,
+    ).toBe(true);
+  },
+};
+
+export const MobileLarge: Story = {
+  globals: {
+    viewport: { value: "mobile2" },
+  },
+  play: async ({ canvasElement }) => {
+    await expectMinimalCrop(canvasElement);
+    await expect(
+      window.innerWidth >= document.documentElement.scrollWidth - 1,
+    ).toBe(true);
+  },
+};
+
+export const Tablet: Story = {
+  globals: {
+    viewport: { value: "tablet" },
   },
   play: async ({ canvasElement }) => {
     await expectMinimalCrop(canvasElement);

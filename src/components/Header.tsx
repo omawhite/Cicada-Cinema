@@ -11,7 +11,7 @@ import {
 } from "@/components/ui/navigation-menu";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 
-const DEFAULT_LOGO = "/Cicada_Cinema_2024_icon_5-circle-white_80x@2x.png";
+const DEFAULT_LOGO = "/Cicada_Cinema_2024_icon_5-circle-white_80x@2x.avif";
 
 /** A single navigation link, optionally with a dropdown of child links. */
 interface NavLink {
