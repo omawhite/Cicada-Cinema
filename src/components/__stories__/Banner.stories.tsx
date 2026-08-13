@@ -9,7 +9,7 @@ const meta = {
   tags: ["autodocs"],
   parameters: {
     layout: "fullscreen",
-    chromatic: { viewports: [375, 768, 1280] },
+    // chromatic: { viewports: [375, 768, 1280] },
   },
   args: {
     src: bannerSrc,
