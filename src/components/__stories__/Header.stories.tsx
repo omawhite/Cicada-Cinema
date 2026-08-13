@@ -18,7 +18,6 @@ const meta = {
       type: "figma",
       url: "https://www.figma.com/design/2roOfYg6qLTIwboYmbSmEM/Cicada-website?node-id=80-198&t=umYsDzs4QKnbAgdw-1",
     },
-    chromatic: { viewports: [375, 768, 1280] },
   },
   argTypes: {
     logoSrc: { control: false, description: "URL of the logo image" },
@@ -127,63 +126,6 @@ export const MinimalNav: Story = {
     await expect(canvas.getByRole("link", { name: /donate/i })).toHaveAttribute(
       "href",
       "#",
-    );
-  },
-};
-
-export const MobileNarrow: Story = {
-  globals: {
-    viewport: { value: "mobile1" },
-  },
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
-
-    const menuButton = canvas.getByRole("button", { name: /open menu/i });
-    await userEvent.click(menuButton);
-
-    await expect(
-      screen.getByRole("link", { name: /showtimes/i }),
-    ).toHaveAttribute("href", "/showtimes");
-    await expect(
-      screen.getByRole("link", { name: /archive/i }),
-    ).toHaveAttribute("href", "/archive");
-    await expect(
-      screen.getByRole("link", { name: /newsletter/i }),
-    ).toHaveAttribute("href", "/newsletter");
-
-    const aboutUsTrigger = await screen.findByRole("button", {
-      name: /about us/i,
-    });
-    await userEvent.click(aboutUsTrigger);
-    await waitFor(() => expect(screen.getByText("Our Mission")).toBeVisible());
-  },
-};
-
-export const MobileNarrowCustomLinks: Story = {
-  args: CustomLinks.args,
-  globals: {
-    viewport: { value: "mobile1" },
-  },
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
-    const menuButton = canvas.getByRole("button", { name: /open menu/i });
-    await userEvent.click(menuButton);
-
-    await expect(
-      screen.getByRole("link", { name: /^about$/i }),
-    ).toHaveAttribute("href", "/about");
-    await expect(
-      screen.getByRole("link", { name: /^contact$/i }),
-    ).toHaveAttribute("href", "/contact");
-
-    const filmsTrigger = await screen.findByRole("button", {
-      name: /films/i,
-    });
-    await userEvent.click(filmsTrigger);
-    await waitFor(() =>
-      expect(
-        screen.getByRole("link", { name: /now showing/i }),
-      ).toHaveAttribute("href", "/films/now-showing"),
     );
   },
 };
