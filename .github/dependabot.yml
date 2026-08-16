@@ -4,6 +4,10 @@ updates:
     directory: '/'
     schedule:
       interval: 'weekly'
+    ignore:
+      - dependency-name: '@types/node'
+        update-types:
+          - 'version-update:semver-major'
     open-pull-requests-limit: 10
     groups:
       astro:
@@ -12,8 +16,18 @@ updates:
           - '@astrojs/*'
           - 'eslint-plugin-astro'
           - 'prettier-plugin-astro'
+          - 'wrangler'
+          - '@cloudflare/*'
+          - 'miniflare'
+          - 'workerd'
         update-types:
           - 'major'
+          - 'minor'
+          - 'patch'
+      node-types:
+        patterns:
+          - '@types/node'
+        update-types:
           - 'minor'
           - 'patch'
       minor-and-patch:

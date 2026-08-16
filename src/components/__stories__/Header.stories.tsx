@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { expect, userEvent, waitFor, within, screen } from "storybook/test";
 import { Header } from "../Header";
-const logoSrc = "/Cicada_Cinema_2024_icon_5-circle-white_80x@2x.png";
+const logoSrc = "/Cicada_Cinema_2024_icon_5-circle-white_80x@2x.avif";
 
 const meta = {
   title: "Components/Header",
@@ -35,9 +35,28 @@ export const Default: Story = {
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     await expect(canvas.getByAltText("Cicada Cinema")).toBeVisible();
-    await expect(canvas.getByRole("link", { name: /home/i })).toHaveAttribute(
+    await expect(
+      canvas.getByRole("link", { name: "Cicada Cinema" }),
+    ).toHaveAttribute("href", "/");
+
+    await expect(
+      canvas.getByRole("link", { name: /showtimes/i }),
+    ).toHaveAttribute("href", "/showtimes");
+    await expect(
+      canvas.getByRole("link", { name: /archive/i }),
+    ).toHaveAttribute("href", "/archive");
+    await expect(
+      canvas.getByRole("link", { name: /newsletter/i }),
+    ).toHaveAttribute("href", "/newsletter");
+
+    const aboutUsTrigger = canvas.getByRole("button", { name: /about us/i });
+    await expect(aboutUsTrigger).toBeVisible();
+    await userEvent.click(aboutUsTrigger);
+    await waitFor(() => expect(screen.getByText("Our Mission")).toBeVisible());
+
+    await expect(canvas.getByRole("link", { name: /donate/i })).toHaveAttribute(
       "href",
-      "/",
+      "#",
     );
   },
 };
@@ -83,6 +102,11 @@ export const CustomLinks: Story = {
     await expect(filmsTrigger).toBeVisible();
     await userEvent.click(filmsTrigger);
     await waitFor(() => expect(screen.getByText("Now Showing")).toBeVisible());
+
+    await expect(canvas.getByRole("link", { name: /donate/i })).toHaveAttribute(
+      "href",
+      "#",
+    );
   },
 };
 
@@ -92,12 +116,16 @@ export const MinimalNav: Story = {
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-    // logo link + 1 nav link = 2 total links
+    // logo link + 1 nav link + Donate link = 3 total links
     const links = canvas.getAllByRole("link");
-    await expect(links).toHaveLength(2);
+    await expect(links).toHaveLength(3);
     await expect(canvas.getByRole("link", { name: /home/i })).toHaveAttribute(
       "href",
       "/",
+    );
+    await expect(canvas.getByRole("link", { name: /donate/i })).toHaveAttribute(
+      "href",
+      "#",
     );
   },
 };
