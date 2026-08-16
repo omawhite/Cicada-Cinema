@@ -1,9 +1,11 @@
 ---
+import { Banner } from "@/components/Banner";
 import { PageBreadcrumb } from "@/components/PageBreadcrumb";
 import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout title="Archive | Cicada Cinema">
+  <Banner />
   <div class="max-w-3xl mx-auto px-6 pt-6">
     <PageBreadcrumb items={[{ label: "Archive" }]} />
   </div>
