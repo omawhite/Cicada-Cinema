@@ -1,0 +1,19 @@
+<!--
+Without the following storybook can't load our custom fonts for cicada.
+-->
+<style>
+  @font-face {
+    font-family: "Reuben";
+    src: url("/fonts/reuben/reuben.woff2");
+  }
+  @font-face {
+    font-family: "Florensans";
+    src: url("/fonts/florensans/Florensans-Regular.woff2");
+  }
+
+  /* Setting the css variables for our fonts these correspond to whats being used in our global.css file. */
+  :root {
+    --font-reuben: "Reuben", sans-serif;
+    --font-florensans: "Florensans", sans-serif;
+  }
+</style>
