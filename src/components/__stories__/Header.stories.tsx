@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { expect, userEvent, waitFor, within, screen } from "storybook/test";
 import { Header } from "../Header";
-const logoSrc = "/Cicada_Cinema_2024_icon_5-circle-white_80x@2x.png";
+const logoSrc = "/Cicada_Cinema_2024_icon_5-circle-white_80x@2x.avif";
 
 const meta = {
   title: "Components/Header",

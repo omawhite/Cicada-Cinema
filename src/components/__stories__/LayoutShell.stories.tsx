@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import { expect, within } from "storybook/test";
 import { LayoutShell } from "../LayoutShell";
 import { Banner } from "../Banner";
-const bannerSrc = "/Cicada_Curtain_CROP_2.png";
+const bannerSrc = "/Cicada_Curtain_CROP_2.webp";
 
 const meta = {
   title: "Layout/LayoutShell",
