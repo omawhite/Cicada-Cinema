@@ -11,7 +11,7 @@ const config: StorybookConfig = {
     "@storybook/addon-designs",
     "@storybook/addon-themes",
   ],
-  staticDirs: ["../public"],
+  staticDirs: ["../public", "../src/assets"],
   framework: "@storybook/react-vite",
   async viteFinal(config) {
     const { mergeConfig } = await import("vite");
