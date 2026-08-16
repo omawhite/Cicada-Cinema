@@ -23,9 +23,6 @@ export default defineConfig({
         variants: [
           {
             src: ["./src/assets/fonts/reuben/Reuben.woff2"],
-            //TODO: verify this is right
-            weight: "normal",
-            style: "normal",
           },
         ],
       },
@@ -38,9 +35,6 @@ export default defineConfig({
         variants: [
           {
             src: ["./src/assets/fonts/florensans/Florensans-Regular.woff2"],
-            //TODO: verify this is right
-            weight: "normal",
-            style: "normal",
           },
         ],
       },
