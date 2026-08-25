@@ -1,19 +1,12 @@
 import { parseMoney, type Money } from "./money";
 
-export interface ShopVariation {
+export interface CatalogVariation {
   id: string;
   name: string;
   price: Money;
 }
 
-export interface ShopItem {
-  id: string;
-  name: string;
-  description?: string;
-  variations: ShopVariation[];
-}
-
-export interface ScreeningVariation extends ShopVariation {
+export interface ScreeningVariation extends CatalogVariation {
   /**
    * ISO-8601 datetime, read from the `screening_start` custom attribute.
    * Undefined when the attribute is missing or malformed — the variation is
@@ -65,32 +58,6 @@ export function isValidScreeningStart(value: unknown): value is string {
     value.length > 0 &&
     !Number.isNaN(new Date(value).getTime())
   );
-}
-
-/** Maps a Square catalog ITEM to a shop listing, dropping variations with no usable price. */
-export function mapItemToShopItem(item: RawItem): ShopItem | null {
-  if (!item.id) return null;
-
-  const variations: ShopVariation[] = [];
-  for (const v of item.itemData?.variations ?? []) {
-    const price = parseMoney(v.itemVariationData?.priceMoney);
-    if (!v.id || !price) {
-      console.warn(
-        `Skipping catalog variation ${v.id ?? "(no id)"} on item ${item.id}: missing price`,
-      );
-      continue;
-    }
-    variations.push({ id: v.id, name: v.itemVariationData?.name ?? "", price });
-  }
-
-  if (variations.length === 0) return null;
-
-  return {
-    id: item.id,
-    name: item.itemData?.name ?? "Untitled",
-    description: item.itemData?.description ?? undefined,
-    variations,
-  };
 }
 
 /**

@@ -1,13 +1,10 @@
 import { SquareClient, SquareEnvironment, SquareError } from "square";
 import {
-  mapItemToShopItem,
   mapItemToScreeningMovie,
-  type ShopItem,
   type ScreeningMovie,
   type RawItem,
 } from "./catalog";
 
-const MERCH_CATEGORY_NAME = "Merch";
 const SCREENINGS_CATEGORY_NAME = "Screenings";
 
 function getSquareClient(): SquareClient | null {
@@ -70,22 +67,6 @@ async function searchItemsByCategory(
     cursor = res.cursor;
   } while (cursor);
   return items;
-}
-
-export async function getMerchItems(): Promise<ShopItem[]> {
-  const client = getSquareClient();
-  if (!client) return [];
-  try {
-    const categoryId = await resolveCategoryId(client, MERCH_CATEGORY_NAME);
-    if (!categoryId) return [];
-    const items = await searchItemsByCategory(client, categoryId);
-    return items
-      .map(mapItemToShopItem)
-      .filter((item): item is ShopItem => item !== null);
-  } catch (err) {
-    logSquareError("fetch merch items", err);
-    return [];
-  }
 }
 
 export async function getScreeningMovies(): Promise<ScreeningMovie[]> {
