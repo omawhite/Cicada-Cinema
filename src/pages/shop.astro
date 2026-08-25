@@ -1,0 +1,22 @@
+---
+export const prerender = false;
+
+import { Banner } from "@/components/Banner";
+import { PageBreadcrumb } from "@/components/PageBreadcrumb";
+import { ShopGrid } from "@/components/ShopGrid";
+import Layout from "../layouts/Layout.astro";
+import { getMerchItems } from "@/lib/square";
+
+const items = await getMerchItems();
+---
+
+<Layout title="Shop | Cicada Cinema">
+  <Banner />
+  <div class="max-w-3xl mx-auto px-6 pt-6">
+    <PageBreadcrumb items={[{ label: "Shop" }]} />
+  </div>
+  <section class="max-w-3xl mx-auto px-6 py-16">
+    <h1 class="text-4xl font-bold mb-6">Cicada Cinema Shop</h1>
+    <ShopGrid client:load items={items} />
+  </section>
+</Layout>

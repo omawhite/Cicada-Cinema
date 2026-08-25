@@ -10,6 +10,7 @@ import {
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { CartButton } from "@/components/CartButton";
 
 const DEFAULT_LOGO = "/Cicada_Cinema_2024_icon_5-circle-white_80x@2x.avif";
 
@@ -103,6 +104,7 @@ export function Header({ logoSrc, navLinks = defaultNavLinks }: HeaderProps) {
             ))}
           </NavigationMenuList>
         </NavigationMenu>
+        <CartButton />
         <a
           href="https://www.paypal.com/ncp/payment/J7TM6CWVH59QL"
           target="_blank"
@@ -114,12 +116,15 @@ export function Header({ logoSrc, navLinks = defaultNavLinks }: HeaderProps) {
       </div>
 
       <Sheet open={mobileOpen} onOpenChange={setMobileOpen}>
-        <SheetTrigger
-          aria-label="Open menu"
-          className="md:hidden inline-flex items-center justify-center p-2"
-        >
-          <Menu aria-hidden="true" />
-        </SheetTrigger>
+        <div className="flex items-center gap-1 md:hidden">
+          <CartButton />
+          <SheetTrigger
+            aria-label="Open menu"
+            className="inline-flex items-center justify-center p-2"
+          >
+            <Menu aria-hidden="true" />
+          </SheetTrigger>
+        </div>
         <SheetContent
           side="right"
           className="bg-black text-white border-white/10 w-3/4 flex flex-col gap-6 p-6"
