@@ -19,6 +19,7 @@ export interface ScreeningMovie {
   id: string;
   name: string;
   description?: string;
+  imageUrl?: string;
   screenings: ScreeningVariation[];
 }
 
@@ -46,6 +47,8 @@ export interface RawItem {
   itemData?: {
     name?: string | null;
     description?: string | null;
+    imageIds?: string[] | null;
+    categories?: { id?: string | null }[] | null;
     variations?: RawVariation[] | null;
   } | null;
 }
@@ -60,14 +63,31 @@ export function isValidScreeningStart(value: unknown): value is string {
   );
 }
 
+/** Picks the item's poster image URL from its `imageIds`, using the first one the caller was able to resolve. */
+export function resolveItemImageUrl(
+  item: RawItem,
+  imageUrlsById: Map<string, string>,
+): string | undefined {
+  for (const imageId of item.itemData?.imageIds ?? []) {
+    const url = imageUrlsById.get(imageId);
+    if (url) return url;
+  }
+  return undefined;
+}
+
 /**
  * Maps a Square catalog ITEM (in the Screenings category) to a movie with its
  * showtimes. A variation only needs a usable price to be included — a
  * missing or malformed `screening_start` doesn't drop it, it just leaves
  * `screeningStart` undefined. Variations with a valid date sort chronologically
- * first; the rest keep their catalog order after.
+ * first; the rest keep their catalog order after. `imageUrlsById` maps Square
+ * IMAGE object ids to URLs — pass the map built from a search response's
+ * `relatedObjects` so the movie's poster can be resolved.
  */
-export function mapItemToScreeningMovie(item: RawItem): ScreeningMovie | null {
+export function mapItemToScreeningMovie(
+  item: RawItem,
+  imageUrlsById: Map<string, string> = new Map(),
+): ScreeningMovie | null {
   if (!item.id) return null;
 
   const screenings: ScreeningVariation[] = [];
@@ -111,6 +131,7 @@ export function mapItemToScreeningMovie(item: RawItem): ScreeningMovie | null {
     id: item.id,
     name: item.itemData?.name ?? "Untitled",
     description: item.itemData?.description ?? undefined,
+    imageUrl: resolveItemImageUrl(item, imageUrlsById),
     screenings,
   };
 }

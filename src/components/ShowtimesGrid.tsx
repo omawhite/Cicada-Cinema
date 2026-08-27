@@ -74,6 +74,7 @@ function MovieScreeningCard({ movie }: { movie: ScreeningMovie }) {
   return (
     <MovieCard
       title={movie.name}
+      posterSrc={movie.imageUrl}
       price={formatPrice((selected ?? movie.screenings[0]).price)}
       movieTimes={movie.screenings.map((s) => labelsById.get(s.id)!)}
       selectedTime={selectedId ? labelsById.get(selectedId) : undefined}

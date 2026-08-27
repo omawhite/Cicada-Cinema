@@ -50,23 +50,41 @@ async function resolveCategoryId(
   return null;
 }
 
-async function searchItemsByCategory(
+/**
+ * Fetches every catalog ITEM along with a lookup of related IMAGE object
+ * URLs. `searchItems` (which supports server-side category filtering) has no
+ * way to include related objects like images, so this uses the more general
+ * `search` instead and leaves category filtering to the caller.
+ */
+async function fetchItemsWithImages(
   client: SquareClient,
-  categoryId: string,
-): Promise<RawItem[]> {
+): Promise<{ items: RawItem[]; imageUrlsById: Map<string, string> }> {
   const items: RawItem[] = [];
+  const imageUrlsById = new Map<string, string>();
   let cursor: string | undefined;
+
   do {
-    const res = await client.catalog.searchItems({
-      categoryIds: [categoryId],
+    const res = await client.catalog.search({
+      objectTypes: ["ITEM"],
+      includeRelatedObjects: true,
       cursor,
       limit: 100,
     });
-    // searchItems is documented to return only ITEM objects, which structurally satisfy RawItem.
-    items.push(...((res.items ?? []) as unknown as RawItem[]));
+    // search with objectTypes: ["ITEM"] returns only ITEM objects, which structurally satisfy RawItem.
+    items.push(...((res.objects ?? []) as unknown as RawItem[]));
+    for (const obj of res.relatedObjects ?? []) {
+      if (obj.type === "IMAGE" && obj.id && obj.imageData?.url) {
+        imageUrlsById.set(obj.id, obj.imageData.url);
+      }
+    }
     cursor = res.cursor;
   } while (cursor);
-  return items;
+
+  return { items, imageUrlsById };
+}
+
+function itemBelongsToCategory(item: RawItem, categoryId: string): boolean {
+  return item.itemData?.categories?.some((c) => c.id === categoryId) ?? false;
 }
 
 export async function getScreeningMovies(): Promise<ScreeningMovie[]> {
@@ -78,9 +96,10 @@ export async function getScreeningMovies(): Promise<ScreeningMovie[]> {
       SCREENINGS_CATEGORY_NAME,
     );
     if (!categoryId) return [];
-    const items = await searchItemsByCategory(client, categoryId);
+    const { items, imageUrlsById } = await fetchItemsWithImages(client);
     return items
-      .map(mapItemToScreeningMovie)
+      .filter((item) => itemBelongsToCategory(item, categoryId))
+      .map((item) => mapItemToScreeningMovie(item, imageUrlsById))
       .filter((movie): movie is ScreeningMovie => movie !== null);
   } catch (err) {
     logSquareError("fetch screening movies", err);

@@ -2,6 +2,7 @@ import { describe, it, expect } from "vitest";
 import {
   isValidScreeningStart,
   mapItemToScreeningMovie,
+  resolveItemImageUrl,
   type RawItem,
 } from "../catalog";
 
@@ -200,5 +201,84 @@ describe("mapItemToScreeningMovie", () => {
 
   it("returns null when the item has no id", () => {
     expect(mapItemToScreeningMovie({ itemData: { name: "No ID" } })).toBeNull();
+  });
+
+  it("sets imageUrl from the first resolvable image id", () => {
+    const raw: RawItem = {
+      id: "movie-1",
+      itemData: {
+        name: "Bicycle Thieves",
+        imageIds: ["img-1"],
+        variations: [
+          {
+            id: "var-a",
+            itemVariationData: {
+              priceMoney: { amount: 1500n, currency: "USD" },
+            },
+          },
+        ],
+      },
+    };
+    const imageUrlsById = new Map([
+      ["img-1", "https://example.com/poster.jpg"],
+    ]);
+
+    const result = mapItemToScreeningMovie(raw, imageUrlsById);
+    expect(result?.imageUrl).toBe("https://example.com/poster.jpg");
+  });
+
+  it("leaves imageUrl undefined when no image id resolves", () => {
+    const raw: RawItem = {
+      id: "movie-1",
+      itemData: {
+        name: "Bicycle Thieves",
+        imageIds: ["img-missing"],
+        variations: [
+          {
+            id: "var-a",
+            itemVariationData: {
+              priceMoney: { amount: 1500n, currency: "USD" },
+            },
+          },
+        ],
+      },
+    };
+
+    const result = mapItemToScreeningMovie(raw, new Map());
+    expect(result?.imageUrl).toBeUndefined();
+  });
+});
+
+describe("resolveItemImageUrl", () => {
+  it("returns the URL for the item's image id", () => {
+    const raw: RawItem = { id: "item-1", itemData: { imageIds: ["img-1"] } };
+    const imageUrlsById = new Map([["img-1", "https://example.com/a.jpg"]]);
+    expect(resolveItemImageUrl(raw, imageUrlsById)).toBe(
+      "https://example.com/a.jpg",
+    );
+  });
+
+  it("falls through to the next image id if the first doesn't resolve", () => {
+    const raw: RawItem = {
+      id: "item-1",
+      itemData: { imageIds: ["img-missing", "img-2"] },
+    };
+    const imageUrlsById = new Map([["img-2", "https://example.com/b.jpg"]]);
+    expect(resolveItemImageUrl(raw, imageUrlsById)).toBe(
+      "https://example.com/b.jpg",
+    );
+  });
+
+  it("returns undefined when there are no image ids", () => {
+    const raw: RawItem = { id: "item-1", itemData: {} };
+    expect(resolveItemImageUrl(raw, new Map())).toBeUndefined();
+  });
+
+  it("returns undefined when no image id resolves", () => {
+    const raw: RawItem = {
+      id: "item-1",
+      itemData: { imageIds: ["img-missing"] },
+    };
+    expect(resolveItemImageUrl(raw, new Map())).toBeUndefined();
   });
 });
