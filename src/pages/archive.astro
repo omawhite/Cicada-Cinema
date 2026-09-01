@@ -1,7 +1,14 @@
 ---
 import { Banner } from "@/components/Banner";
 import { PageBreadcrumb } from "@/components/PageBreadcrumb";
+import { ScreeningsArchiveTable } from "@/components/ScreeningsArchiveTable";
+import { getScreenings } from "@/lib/screenings-cms";
 import Layout from "../layouts/Layout.astro";
+
+// Rendered on demand so the archive reflects the CMS on every request.
+export const prerender = false;
+
+const screenings = await getScreenings();
 ---
 
 <Layout title="Archive | Cicada Cinema">
@@ -12,5 +19,8 @@ import Layout from "../layouts/Layout.astro";
   <section class="max-w-3xl mx-auto px-6 py-16">
     <h1 class="text-4xl font-bold mb-6">Archive</h1>
     <p>See All the Past films Cicada Cinema has Screened so far!</p>
+    <div class="mt-10">
+      <ScreeningsArchiveTable client:load screenings={screenings} />
+    </div>
   </section>
 </Layout>

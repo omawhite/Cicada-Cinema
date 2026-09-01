@@ -1,0 +1,18 @@
+diff --git a/frontend/components/shared/Code.astro b/frontend/components/shared/Code.astro
+index 7f0766eb2e8c6514c64e61f4da9a7f2107846fe1..ef8374e807497c15692da34816028edbce6e97b8 100644
+--- a/frontend/components/shared/Code.astro
++++ b/frontend/components/shared/Code.astro
+@@ -41,6 +41,7 @@ const id = __test_mode ? 'test-id' : Math.random().toString(36).substring(2, 9);
+ 
+ <pre class="code-container scrollbar"><code id={id} class:list={["custom-code", (del || ins) ? 'diff' : '']} {...props} set:html={htmlCode} /></pre>
+ <script is:inline define:vars={{ id: id }}>
++(() => {
+ 	const codesWithDiff = document.getElementById(id);
+ 
+ 	if (!codesWithDiff) return;
+@@ -70,4 +71,5 @@ const id = __test_mode ? 'test-id' : Math.random().toString(36).substring(2, 9);
+ 			line.classList.add("diff", "del");
+ 		}
+ 	});
++})();
+ </script>

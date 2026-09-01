@@ -37,3 +37,6 @@ pnpm-debug.log*
 #Storybook
 *storybook.log
 storybook-static
+
+# StudioCMS local database
+.studiocms/

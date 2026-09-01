@@ -13,6 +13,9 @@
     "astro": "astro",
     "deploy": "wrangler deploy",
     "deploy:preview": "wrangler versions upload",
+    "db:serve": "node scripts/libsql-dev-server.mjs",
+    "cms:migrate": "studiocms migrate",
+    "cms:users": "studiocms users",
     "lint": "eslint .",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
@@ -27,18 +30,26 @@
   "dependencies": {
     "@astrojs/react": "^6.0.2",
     "@base-ui/react": "^1.7.0",
+    "@effect/platform": "^0.94.5",
+    "@effect/platform-node": "^0.104.1",
     "@fontsource-variable/roboto": "^5.3.0",
+    "@libsql/client": "^0.15.15",
     "@storybook/addon-themes": "^10.5.8",
     "@tailwindcss/vite": "^4.3.3",
+    "@types/picomatch": "^4.0.3",
     "@types/react": "^19.2.18",
     "@types/react-dom": "^19.2.4",
     "astro": "^7.2.1",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "effect": "^3.22.1",
+    "kysely-turso": "^0.1.1",
     "lucide-react": "^1.31.0",
+    "picomatch": "^4.0.7",
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
     "shadcn": "^4.17.0",
+    "studiocms": "0.4.4",
     "tailwind-merge": "^3.6.0",
     "tailwindcss": "^4.3.3",
     "tw-animate-css": "^1.4.0",
@@ -49,8 +60,8 @@
     "@astrojs/cloudflare": "^14.2.1",
     "@chromatic-com/storybook": "^5.3.0",
     "@storybook/addon-a11y": "^10.5.8",
-    "@storybook/addon-docs": "^10.5.8",
     "@storybook/addon-designs": "11.1.4",
+    "@storybook/addon-docs": "^10.5.8",
     "@storybook/addon-onboarding": "^10.5.8",
     "@storybook/addon-vitest": "^10.5.8",
     "@storybook/react-vite": "^10.5.8",
@@ -63,6 +74,7 @@
     "playwright": "^1.62.1",
     "prettier": "^3.9.6",
     "prettier-plugin-astro": "^0.14.1",
+    "sqld": "0.24.1-pre.42",
     "storybook": "^10.5.8",
     "typescript": "5.9.3",
     "typescript-eslint": "^8.67.0",
@@ -75,6 +87,14 @@
       "esbuild",
       "sharp",
       "workerd"
-    ]
+    ],
+    "peerDependencyRules": {
+      "allowedVersions": {
+        "astro": "7"
+      }
+    },
+    "patchedDependencies": {
+      "studiocms@0.4.4": "patches/studiocms@0.4.4.patch"
+    }
   }
 }
