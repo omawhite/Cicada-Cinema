@@ -1,4 +1,4 @@
-import { defineConfig, fontProviders } from "astro/config";
+import { defineConfig, envField, fontProviders } from "astro/config";
 import cloudflare from "@astrojs/cloudflare";
 import tailwindcss from "@tailwindcss/vite";
 
@@ -15,6 +15,19 @@ export default defineConfig({
     plugins: [tailwindcss()],
     optimizeDeps: {
       exclude: ["astro/assets/services/noop"],
+    },
+  },
+  env: {
+    schema: {
+      // Page-release flags: flip to `true` once a page is ready to go live.
+      // The gated page itself (e.g. src/pages/showtimes.astro) is rendered
+      // on demand and reads this live, but anything resolved at build time
+      // (e.g. the header nav link) needs a rebuild to pick up the change.
+      PAGE_SHOWTIMES_ENABLED: envField.boolean({
+        context: "server",
+        access: "public",
+        default: false,
+      }),
     },
   },
   fonts: [

@@ -6,12 +6,17 @@ import { Footer } from "./Footer";
 interface LayoutShellProps {
   /** Page content rendered inside the main element. */
   children?: ReactNode;
+  /** Whether the Showtimes nav link is shown. Defaults to true. */
+  showtimesEnabled?: boolean;
 }
 
-export function LayoutShell({ children }: LayoutShellProps) {
+export function LayoutShell({
+  children,
+  showtimesEnabled = true,
+}: LayoutShellProps) {
   return (
     <div className="flex flex-col min-h-screen">
-      <Header />
+      <Header showtimesEnabled={showtimesEnabled} />
       <main className="flex-1">{children}</main>
       <Footer />
     </div>

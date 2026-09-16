@@ -36,6 +36,8 @@ interface HeaderProps {
   logoSrc?: string;
   /** Navigation links rendered in the menu. Defaults to a single Home link. */
   navLinks?: NavLink[];
+  /** Whether the Showtimes nav link is shown. Defaults to true. */
+  showtimesEnabled?: boolean;
 }
 
 const defaultNavLinks: NavLink[] = [
@@ -54,8 +56,15 @@ const defaultNavLinks: NavLink[] = [
   },
 ];
 
-export function Header({ logoSrc, navLinks = defaultNavLinks }: HeaderProps) {
+export function Header({
+  logoSrc,
+  navLinks = defaultNavLinks,
+  showtimesEnabled = true,
+}: HeaderProps) {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const visibleNavLinks = showtimesEnabled
+    ? navLinks
+    : navLinks.filter((link) => link.href !== "/showtimes");
 
   return (
     <header className="bg-black text-white h-16 px-4 md:h-25 md:px-15 flex items-center justify-between">
@@ -71,7 +80,7 @@ export function Header({ logoSrc, navLinks = defaultNavLinks }: HeaderProps) {
       <div className="hidden md:flex items-center gap-11">
         <NavigationMenu>
           <NavigationMenuList>
-            {navLinks.map(({ href, label, children }) => (
+            {visibleNavLinks.map(({ href, label, children }) => (
               <NavigationMenuItem key={label}>
                 {children ? (
                   <>
@@ -123,7 +132,7 @@ export function Header({ logoSrc, navLinks = defaultNavLinks }: HeaderProps) {
           className="bg-black text-white border-white/10 w-3/4 flex flex-col gap-6 p-6"
         >
           <nav className="flex flex-col gap-4 mt-10">
-            {navLinks.map(({ href, label, children }) =>
+            {visibleNavLinks.map(({ href, label, children }) =>
               children ? (
                 <Collapsible.Root key={label}>
                   <Collapsible.Trigger className="group flex w-full items-center justify-between text-lg">
