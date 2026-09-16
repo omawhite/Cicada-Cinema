@@ -34,8 +34,7 @@ export const Default: Story = {
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-    await expect(canvas.getByText("Contact Us")).toBeVisible();
-    await expect(canvas.getByText("Newsletter")).toBeVisible();
+    await expect(canvas.queryAllByRole("link")).toHaveLength(2);
     await expect(canvas.getByLabelText("Letterboxd")).toBeVisible();
     await expect(canvas.getByLabelText("Instagram")).toBeVisible();
   },

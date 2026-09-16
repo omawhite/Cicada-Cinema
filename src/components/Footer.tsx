@@ -19,13 +19,8 @@ interface FooterProps {
   letterboxdUrl?: string;
 }
 
-const defaultLinks: FooterLink[] = [
-  { href: "/contact", label: "Contact Us" },
-  { href: "/newsletter", label: "Newsletter" },
-];
-
 export function Footer({
-  links = defaultLinks,
+  links = [],
   instagramUrl = "https://instagram.com/cicada_cinema",
   letterboxdUrl = "https://letterboxd.com/cicada_cinema",
 }: FooterProps) {

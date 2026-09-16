@@ -39,6 +39,36 @@ export const Default: Story = {
       canvas.getByRole("link", { name: "Cicada Cinema" }),
     ).toHaveAttribute("href", "/");
 
+    // No pages are live yet — defaultNavLinks is empty until uncommented.
+    // logo link + Donate link = 2 total links
+    await expect(canvas.getAllByRole("link")).toHaveLength(2);
+    await expect(canvas.getByRole("link", { name: /donate/i })).toHaveAttribute(
+      "href",
+      "#",
+    );
+  },
+};
+
+export const FullSiteNav: Story = {
+  args: {
+    navLinks: [
+      { href: "/showtimes", label: "Showtimes" },
+      { href: "/archive", label: "Archive" },
+      { href: "/newsletter", label: "Newsletter" },
+      {
+        label: "About Us",
+        children: [
+          { href: "/mission", label: "Our Mission" },
+          { href: "/get-involved", label: "Get Involved" },
+          { href: "/membership", label: "Membership" },
+          { href: "/rental", label: "Rental" },
+          { href: "/contact", label: "Contact Us" },
+        ],
+      },
+    ],
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
     await expect(
       canvas.getByRole("link", { name: /showtimes/i }),
     ).toHaveAttribute("href", "/showtimes");

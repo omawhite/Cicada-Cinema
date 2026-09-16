@@ -34,37 +34,12 @@ interface NavLink {
 interface HeaderProps {
   /** Src for the logo image. Defaults to the Cicada Cinema icon. */
   logoSrc?: string;
-  /** Navigation links rendered in the menu. Defaults to a single Home link. */
+  /** Navigation links rendered in the menu. */
   navLinks?: NavLink[];
-  /** Whether the Showtimes nav link is shown. Defaults to true. */
-  showtimesEnabled?: boolean;
 }
 
-const defaultNavLinks: NavLink[] = [
-  { href: "/showtimes", label: "Showtimes" },
-  { href: "/archive", label: "Archive" },
-  { href: "/newsletter", label: "Newsletter" },
-  {
-    label: "About Us",
-    children: [
-      { href: "/mission", label: "Our Mission" },
-      { href: "/get-involved", label: "Get Involved" },
-      { href: "/membership", label: "Membership" },
-      { href: "/rental", label: "Rental" },
-      { href: "/contact", label: "Contact Us" },
-    ],
-  },
-];
-
-export function Header({
-  logoSrc,
-  navLinks = defaultNavLinks,
-  showtimesEnabled = true,
-}: HeaderProps) {
+export function Header({ logoSrc, navLinks = [] }: HeaderProps) {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const visibleNavLinks = showtimesEnabled
-    ? navLinks
-    : navLinks.filter((link) => link.href !== "/showtimes");
 
   return (
     <header className="bg-black text-white h-16 px-4 md:h-25 md:px-15 flex items-center justify-between">
@@ -80,7 +55,7 @@ export function Header({
       <div className="hidden md:flex items-center gap-11">
         <NavigationMenu>
           <NavigationMenuList>
-            {visibleNavLinks.map(({ href, label, children }) => (
+            {navLinks.map(({ href, label, children }) => (
               <NavigationMenuItem key={label}>
                 {children ? (
                   <>
@@ -132,7 +107,7 @@ export function Header({
           className="bg-black text-white border-white/10 w-3/4 flex flex-col gap-6 p-6"
         >
           <nav className="flex flex-col gap-4 mt-10">
-            {visibleNavLinks.map(({ href, label, children }) =>
+            {navLinks.map(({ href, label, children }) =>
               children ? (
                 <Collapsible.Root key={label}>
                   <Collapsible.Trigger className="group flex w-full items-center justify-between text-lg">
