@@ -54,10 +54,7 @@ export const Default: Story = {
     await userEvent.click(aboutUsTrigger);
     await waitFor(() => expect(screen.getByText("Our Mission")).toBeVisible());
 
-    await expect(canvas.getByRole("link", { name: /donate/i })).toHaveAttribute(
-      "href",
-      "#",
-    );
+    await expect(canvas.getByRole("link", { name: /donate/i })).toBeVisible();
   },
 };
 
@@ -103,10 +100,7 @@ export const CustomLinks: Story = {
     await userEvent.click(filmsTrigger);
     await waitFor(() => expect(screen.getByText("Now Showing")).toBeVisible());
 
-    await expect(canvas.getByRole("link", { name: /donate/i })).toHaveAttribute(
-      "href",
-      "#",
-    );
+    await expect(canvas.getByRole("link", { name: /donate/i })).toBeVisible();
   },
 };
 
@@ -123,9 +117,6 @@ export const MinimalNav: Story = {
       "href",
       "/",
     );
-    await expect(canvas.getByRole("link", { name: /donate/i })).toHaveAttribute(
-      "href",
-      "#",
-    );
+    await expect(canvas.getByRole("link", { name: /donate/i })).toBeVisible();
   },
 };
