@@ -88,7 +88,9 @@ export function Header({ logoSrc, navLinks = [] }: HeaderProps) {
           </NavigationMenuList>
         </NavigationMenu>
         <a
-          href="#"
+          href="https://www.paypal.com/ncp/payment/J7TM6CWVH59QL"
+          target="_blank"
+          rel="noopener noreferrer"
           className="bg-[#767676] text-white rounded-lg px-4 py-2.5 text-lg hover:bg-[#767676]/80"
         >
           Donate
@@ -148,7 +150,9 @@ export function Header({ logoSrc, navLinks = [] }: HeaderProps) {
             )}
           </nav>
           <a
-            href="#"
+            href="https://www.paypal.com/ncp/payment/J7TM6CWVH59QL"
+            target="_blank"
+            rel="noopener noreferrer"
             onClick={() => setMobileOpen(false)}
             className="mt-auto bg-[#767676] text-white rounded-lg px-4 py-2.5 text-lg text-center hover:bg-[#767676]/80"
           >
