@@ -18,7 +18,7 @@ export function Banner({ src }: BannerProps) {
       <img
         src={src ?? DEFAULT_BANNER}
         alt="Cicada Cinema Banner"
-        className="object-cover object-center w-full h-full"
+        className="object-cover object-bottom w-full h-full"
         loading="eager"
       />
     </div>
