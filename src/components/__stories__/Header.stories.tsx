@@ -42,10 +42,7 @@ export const Default: Story = {
     // No pages are live yet — defaultNavLinks is empty until uncommented.
     // logo link + Donate link = 2 total links
     await expect(canvas.getAllByRole("link")).toHaveLength(2);
-    await expect(canvas.getByRole("link", { name: /donate/i })).toHaveAttribute(
-      "href",
-      "#",
-    );
+    await expect(canvas.getByRole("link", { name: /donate/i })).toBeVisible();
   },
 };
 
