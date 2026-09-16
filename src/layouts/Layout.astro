@@ -2,7 +2,6 @@
 import "../global.css";
 import { LayoutShell } from "../components/LayoutShell";
 import { Font } from "astro:assets";
-import { PAGE_SHOWTIMES_ENABLED } from "astro:env/server";
 
 interface Props {
   title?: string;
@@ -23,7 +22,7 @@ const { title = "Cicada Cinema" } = Astro.props;
     <title>{title}</title>
   </head>
   <body>
-    <LayoutShell client:load showtimesEnabled={PAGE_SHOWTIMES_ENABLED}>
+    <LayoutShell client:load>
       <slot />
     </LayoutShell>
   </body>

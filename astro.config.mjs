@@ -28,6 +28,23 @@ export default defineConfig({
         access: "public",
         default: false,
       }),
+      PAGE_ARCHIVE_ENABLED: envField.boolean({
+        context: "server",
+        access: "public",
+        default: false,
+      }),
+      PAGE_NEWSLETTER_ENABLED: envField.boolean({
+        context: "server",
+        access: "public",
+        default: false,
+      }),
+      // Governs every "About Us" page (mission, get-involved, membership,
+      // rental, contact) and the "About Us" nav dropdown as one unit.
+      PAGE_ABOUT_ENABLED: envField.boolean({
+        context: "server",
+        access: "public",
+        default: false,
+      }),
     },
   },
   fonts: [

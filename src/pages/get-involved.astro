@@ -2,6 +2,13 @@
 import { Banner } from "@/components/Banner";
 import { PageBreadcrumb } from "@/components/PageBreadcrumb";
 import Layout from "../layouts/Layout.astro";
+import { PAGE_ABOUT_ENABLED } from "astro:env/server";
+
+export const prerender = false;
+
+if (!PAGE_ABOUT_ENABLED) {
+  return new Response(null, { status: 404 });
+}
 ---
 
 <Layout title="Get Involved | Cicada Cinema">

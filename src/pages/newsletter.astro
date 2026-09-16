@@ -3,6 +3,13 @@ import { Banner } from "@/components/Banner";
 import { NewsletterSignup } from "@/components/NewsletterSignup";
 import { PageBreadcrumb } from "@/components/PageBreadcrumb";
 import Layout from "../layouts/Layout.astro";
+import { PAGE_NEWSLETTER_ENABLED } from "astro:env/server";
+
+export const prerender = false;
+
+if (!PAGE_NEWSLETTER_ENABLED) {
+  return new Response(null, { status: 404 });
+}
 ---
 
 <Layout title="Newsletter | Cicada Cinema">
