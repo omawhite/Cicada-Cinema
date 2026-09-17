@@ -13,6 +13,9 @@ export default defineConfig({
   integrations: [react()],
   vite: {
     plugins: [tailwindcss()],
+    optimizeDeps: {
+      exclude: ["astro/assets/services/noop"],
+    },
   },
   fonts: [
     {
