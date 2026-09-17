@@ -30,9 +30,9 @@ export function Footer({
   letterboxdUrl = "https://letterboxd.com/cicada_cinema",
 }: FooterProps) {
   return (
-    <footer className="bg-black h-25 flex items-center justify-end px-12.5">
-      <div className="flex items-center gap-7.5">
-        <nav className="flex items-center gap-6">
+    <footer className="bg-black flex flex-col items-center justify-center gap-4 px-6 py-6 md:h-25 md:flex-row md:justify-end md:gap-7.5 md:px-12.5 md:py-0">
+      <div className="flex flex-col items-center gap-4 md:flex-row md:gap-7.5">
+        <nav className="flex flex-wrap items-center justify-center gap-6">
           {links.map(({ href, label }) => (
             <a
               key={href}
