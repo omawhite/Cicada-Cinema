@@ -20,6 +20,7 @@ const { title = "Cicada Cinema" } = Astro.props;
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
+    <slot name="head" />
   </head>
   <body>
     <LayoutShell client:load>

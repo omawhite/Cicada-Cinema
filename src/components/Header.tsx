@@ -68,7 +68,8 @@ export function Header({ logoSrc, navLinks = defaultNavLinks }: HeaderProps) {
           className="size-14 md:size-25"
         />
       </a>
-      <div className="hidden md:flex items-center gap-11">
+      {/* max-md:hidden, not `hidden md:flex`: the SimpleTix widget injects a global `.hidden { display: none !important }` */}
+      <div className="flex max-md:hidden items-center gap-11">
         <NavigationMenu>
           <NavigationMenuList>
             {navLinks.map(({ href, label, children }) => (
