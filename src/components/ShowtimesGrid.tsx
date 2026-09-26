@@ -24,11 +24,7 @@ function getScreeningLabel(screening: ScreeningVariation): string {
 
 export function ShowtimesGrid({ movies }: ShowtimesGridProps) {
   if (movies.length === 0) {
-    return (
-      <p className="text-muted-foreground">
-        No screenings are currently listed. Please check back soon.
-      </p>
-    );
+    return <p className="text-muted-foreground">Please check back soon.</p>;
   }
 
   return (
