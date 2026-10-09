@@ -1,7 +1,24 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { expect, userEvent, waitFor, within, screen } from "storybook/test";
 import { Header } from "../Header";
+import type { NavLink } from "@/types/nav";
 const logoSrc = "/Cicada_Cinema_2024_icon_5-circle-white_80x@2x.avif";
+
+const defaultNavLinks: NavLink[] = [
+  { href: "/showtimes", label: "Showtimes" },
+  { href: "/archive", label: "Archive" },
+  { href: "/newsletter", label: "Newsletter" },
+  {
+    label: "About Us",
+    children: [
+      { href: "/mission", label: "Our Mission" },
+      { href: "/get-involved", label: "Get Involved" },
+      { href: "/membership", label: "Membership" },
+      { href: "/rental", label: "Rental" },
+      { href: "/contact", label: "Contact Us" },
+    ],
+  },
+];
 
 const meta = {
   title: "Components/Header",
@@ -25,6 +42,7 @@ const meta = {
   },
   args: {
     logoSrc,
+    navLinks: defaultNavLinks,
   },
 } satisfies Meta<typeof Header>;
 

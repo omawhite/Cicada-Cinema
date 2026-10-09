@@ -2,12 +2,34 @@
 import "../global.css";
 import { LayoutShell } from "../components/LayoutShell";
 import { Font } from "astro:assets";
+import { PAGE_ARCHIVE_ENABLED } from "astro:env/server";
+import type { NavLink } from "@/types/nav";
 
 interface Props {
   title?: string;
 }
 
 const { title = "Cicada Cinema" } = Astro.props;
+
+const defaultNavLinks: NavLink[] = [
+  { href: "/showtimes", label: "Showtimes" },
+  { href: "/archive", label: "Archive" },
+  { href: "/newsletter", label: "Newsletter" },
+  {
+    label: "About Us",
+    children: [
+      { href: "/mission", label: "Our Mission" },
+      { href: "/get-involved", label: "Get Involved" },
+      { href: "/membership", label: "Membership" },
+      { href: "/rental", label: "Rental" },
+      { href: "/contact", label: "Contact Us" },
+    ],
+  },
+];
+
+const navLinks = PAGE_ARCHIVE_ENABLED
+  ? defaultNavLinks
+  : defaultNavLinks.filter((link) => link.href !== "/archive");
 ---
 
 <html lang="en">
@@ -22,7 +44,7 @@ const { title = "Cicada Cinema" } = Astro.props;
     <title>{title}</title>
   </head>
   <body>
-    <LayoutShell client:load>
+    <LayoutShell client:load navLinks={navLinks}>
       <slot />
     </LayoutShell>
   </body>

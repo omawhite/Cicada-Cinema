@@ -1,7 +1,14 @@
 ---
+export const prerender = false;
+
 import { Banner } from "@/components/Banner";
 import { PageBreadcrumb } from "@/components/PageBreadcrumb";
 import Layout from "../layouts/Layout.astro";
+import { PAGE_ARCHIVE_ENABLED } from "astro:env/server";
+
+if (!PAGE_ARCHIVE_ENABLED) {
+  return new Response(null, { status: 404 });
+}
 ---
 
 <Layout title="Archive | Cicada Cinema">

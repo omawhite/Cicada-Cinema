@@ -2,7 +2,24 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import { expect, within } from "storybook/test";
 import { LayoutShell } from "../LayoutShell";
 import { Banner } from "../Banner";
+import type { NavLink } from "@/types/nav";
 const bannerSrc = "/Cicada_Curtain_CROP_2.webp";
+
+const navLinks: NavLink[] = [
+  { href: "/showtimes", label: "Showtimes" },
+  { href: "/archive", label: "Archive" },
+  { href: "/newsletter", label: "Newsletter" },
+  {
+    label: "About Us",
+    children: [
+      { href: "/mission", label: "Our Mission" },
+      { href: "/get-involved", label: "Get Involved" },
+      { href: "/membership", label: "Membership" },
+      { href: "/rental", label: "Rental" },
+      { href: "/contact", label: "Contact Us" },
+    ],
+  },
+];
 
 const meta = {
   title: "Layout/LayoutShell",
@@ -11,6 +28,9 @@ const meta = {
   parameters: {
     layout: "fullscreen",
   },
+  args: {
+    navLinks,
+  },
 } satisfies Meta<typeof LayoutShell>;
 
 export default meta;
@@ -18,7 +38,7 @@ type Story = StoryObj<typeof meta>;
 
 export const WithBanner: Story = {
   render: () => (
-    <LayoutShell>
+    <LayoutShell navLinks={navLinks}>
       <Banner src={bannerSrc} />
       <div className="m-8">
         <p className="text-center">More coming soon!</p>
@@ -34,7 +54,7 @@ export const WithBanner: Story = {
 
 export const WithText: Story = {
   render: () => (
-    <LayoutShell>
+    <LayoutShell navLinks={navLinks}>
       <div className="m-8">
         <p className="text-center">More coming soon!</p>
       </div>
@@ -49,7 +69,7 @@ export const WithText: Story = {
 
 export const WithBannerAndPageLayout: Story = {
   render: () => (
-    <LayoutShell>
+    <LayoutShell navLinks={navLinks}>
       <Banner src={bannerSrc} />
       <div className="m-8">
         <section className="space-y-4">

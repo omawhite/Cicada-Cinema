@@ -10,51 +10,19 @@ import {
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import type { NavLink } from "@/types/nav";
 
 const DEFAULT_LOGO = "/Cicada_Cinema_2024_icon_5-circle-white_80x@2x.avif";
-
-/** A single navigation link, optionally with a dropdown of child links. */
-interface NavLink {
-  /** URL for a direct link. Omit when `children` is provided. */
-  href?: string;
-  /** Display text for the link or dropdown trigger. */
-  label: string;
-  /** Child links rendered inside a dropdown panel. */
-  children?: {
-    /** URL for the child link. */
-    href: string;
-    /** Display text for the child link. */
-    label: string;
-    /** Optional subtitle shown beneath the label in the dropdown. */
-    description?: string;
-  }[];
-}
 
 /** Props for the site-wide Header component. */
 interface HeaderProps {
   /** Src for the logo image. Defaults to the Cicada Cinema icon. */
   logoSrc?: string;
-  /** Navigation links rendered in the menu. Defaults to a single Home link. */
-  navLinks?: NavLink[];
+  /** Navigation links rendered in the menu. */
+  navLinks: NavLink[];
 }
 
-const defaultNavLinks: NavLink[] = [
-  { href: "/showtimes", label: "Showtimes" },
-  { href: "/archive", label: "Archive" },
-  { href: "/newsletter", label: "Newsletter" },
-  {
-    label: "About Us",
-    children: [
-      { href: "/mission", label: "Our Mission" },
-      { href: "/get-involved", label: "Get Involved" },
-      { href: "/membership", label: "Membership" },
-      { href: "/rental", label: "Rental" },
-      { href: "/contact", label: "Contact Us" },
-    ],
-  },
-];
-
-export function Header({ logoSrc, navLinks = defaultNavLinks }: HeaderProps) {
+export function Header({ logoSrc, navLinks }: HeaderProps) {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   return (

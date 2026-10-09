@@ -21,7 +21,7 @@ export default defineConfig({
         test: {
           name: "unit",
           include: ["**/*.{test,spec}.{ts,tsx}"],
-          exclude: ["node_modules", "dist", ".astro"],
+          exclude: ["node_modules", "dist", ".astro", ".claude"],
         },
       },
       {
