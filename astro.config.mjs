@@ -1,4 +1,4 @@
-import { defineConfig, fontProviders } from "astro/config";
+import { defineConfig, envField, fontProviders } from "astro/config";
 import cloudflare from "@astrojs/cloudflare";
 import tailwindcss from "@tailwindcss/vite";
 
@@ -11,6 +11,15 @@ export default defineConfig({
     prerenderEnvironment: "node",
   }),
   integrations: [react()],
+  env: {
+    schema: {
+      PAGE_ARCHIVE_ENABLED: envField.boolean({
+        context: "server",
+        access: "public",
+        default: false,
+      }),
+    },
+  },
   vite: {
     plugins: [tailwindcss()],
     optimizeDeps: {
