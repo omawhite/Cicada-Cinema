@@ -38,7 +38,7 @@ async function resolveCategoryId(
   name: string,
 ): Promise<string | null> {
   const categories = await client.catalog.list({ types: "CATEGORY" });
-  console.log(categories);
+  // console.log(categories);
   for await (const obj of categories) {
     if (obj.type === "CATEGORY" && obj.categoryData?.name === name) {
       return obj.id ?? null;
