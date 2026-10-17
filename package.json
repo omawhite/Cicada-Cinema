@@ -32,7 +32,7 @@
     "@tailwindcss/vite": "^4.3.3",
     "@types/react": "^19.3.0",
     "@types/react-dom": "^19.3.0",
-    "astro": "^7.3.5",
+    "astro": "^7.3.8",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "lucide-react": "^1.49.0",
@@ -62,13 +62,13 @@
     "eslint-plugin-storybook": "^10.6.1",
     "playwright": "^1.63.0",
     "prettier": "^3.9.9",
-    "prettier-plugin-astro": "^1.1.0",
+    "prettier-plugin-astro": "^1.1.1",
     "storybook": "^10.6.1",
     "typescript": "5.9.3",
     "typescript-eslint": "^8.71.0",
     "vite-tsconfig-paths": "^6.1.1",
     "vitest": "^4.1.10",
-    "wrangler": "^4.147.0"
+    "wrangler": "^4.151.0"
   },
   "pnpm": {
     "onlyBuiltDependencies": [
