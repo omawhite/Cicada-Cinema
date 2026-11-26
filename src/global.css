@@ -126,4 +126,8 @@
   html {
     @apply font-sans;
   }
+  /* Inline links in body copy. Nav/button links are styled per-component. */
+  :where(p) a {
+    @apply text-primary underline underline-offset-4 hover:opacity-80;
+  }
 }

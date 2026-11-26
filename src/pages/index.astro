@@ -3,6 +3,7 @@ import { Banner } from "@/components/Banner";
 import { NewsletterSignup } from "@/components/NewsletterSignup";
 import { PageBreadcrumb } from "@/components/PageBreadcrumb";
 import Layout from "../layouts/Layout.astro";
+import { Button } from "@/components/ui/button";
 ---
 
 <Layout>
@@ -15,10 +16,36 @@ import Layout from "../layouts/Layout.astro";
       Cicada Cinema is opening a movie theater!
     </h1>
     <p>
-      We're opening a physical, community movie theater on Bloomington's
-      northwest side, and we need your help! Click the button below to learn
-      more about the new theater and how you can provide support.
+      {`We're opening a physical, community movie theater on Bloomington's near
+      west side. Our fundraising campaign may be over, but you can still donate
+      to support Cicada Cinema! Please send checks to 818 W 6th St, Bloomington,
+      IN 47404 or you can donate online using `}
+      <a
+        href="https://www.paypal.com/donate/?cmd=_donations&business=donate@cicadacinema.com"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        PayPal
+      </a>{" "}
+      {`(donate@cicadacinema.com) or `}
+      <a
+        href="https://venmo.com/u/cicada_cinema"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Venmo
+      </a>
+      {` (@cicada_cinema).`}
     </p>
+
+    <Button variant="default" className="mt-6 flex mx-auto w-fit">
+      <a
+        href="https://www.patronicity.com/project/cicada_cinema__bloomingtons_new_movie_theater"
+        class="text-white no-underline"
+      >
+        Learn more about the campaign
+      </a>
+    </Button>
   </section>
 
   <section class="bg-black">
